@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://duqvu1qjk4wfq"]
+
+[ext_resource type="Script" path="res://Mountains.gd" id="1_t88ve"]
+[ext_resource type="Texture2D" uid="uid://ccglaxrd5rs3d" path="res://Layers/glacial_mountains_lightened.png" id="2_aiqwm"]
+
+[node name="Mountains" type="ParallaxBackground"]
+script = ExtResource("1_t88ve")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(384, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+texture_filter = 1
+position = Vector2(192, 516)
+texture = ExtResource("2_aiqwm")
