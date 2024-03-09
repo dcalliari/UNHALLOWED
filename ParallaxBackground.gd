@@ -11,4 +11,4 @@ func _process(delta):
 	pass
 
 func _physics_process(delta):
-	scroll_base_offset -= Vector2(10, 0) *delta
+	scroll_base_offset -= Vector2(20, 0) *delta
