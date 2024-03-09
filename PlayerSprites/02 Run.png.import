@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bud5oq3mtygr8"
-path="res://.godot/imported/04 Roll.png-63752431ee78ad6c9d1d6abd93f8acdd.ctex"
+uid="uid://bqu4oqtm8kc8r"
+path="res://.godot/imported/02 Run.png-4b3b89930265cd79d27d9a68f262587e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://04 Roll.png"
-dest_files=["res://.godot/imported/04 Roll.png-63752431ee78ad6c9d1d6abd93f8acdd.ctex"]
+source_file="res://PlayerSprites/02 Run.png"
+dest_files=["res://.godot/imported/02 Run.png-4b3b89930265cd79d27d9a68f262587e.ctex"]
 
 [params]
 
