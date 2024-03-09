@@ -13,7 +13,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
 	pass
 
-func _physics_process(delta):	
+func _physics_process(delta):
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -22,13 +23,16 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		animPlayer.play('jump')
 		velocity.y = JUMP_VELOCITY
-		
+	
+	if Input.is_action_just_released("jump") and velocity.y < 0:
+		velocity.y = -200
+	
 	if Input.is_action_just_pressed("roll") and is_on_floor():
 		animPlayer.play('roll')
 		collision.set_disabled(true)
 		collisionRolling.set_disabled(false)
 		
-	if not animPlayer.is_playing():
+	if not animPlayer.is_playing() and is_on_floor():
 		animPlayer.play("running")
 		collision.set_disabled(false)
 		collisionRolling.set_disabled(true)
