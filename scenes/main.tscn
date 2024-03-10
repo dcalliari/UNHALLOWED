@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://u20ycfg0c02j"]
+[gd_scene load_steps=11 format=3 uid="uid://u20ycfg0c02j"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_qtysx"]
 [ext_resource type="Script" path="res://scripts/parallax.gd" id="1_yspxj"]
@@ -10,9 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://dri0yb2fkqgef" path="res://assets/background_parallax/clouds_mg_2.png" id="6_1qobk"]
 [ext_resource type="Texture2D" uid="uid://bt8y7dyi8wun7" path="res://assets/background_parallax/clouds_mg_1_lightened.png" id="7_b4gxh"]
 [ext_resource type="PackedScene" uid="uid://dsqwmgylicqrd" path="res://scenes/player.tscn" id="11_pacdj"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lmt78"]
-size = Vector2(1280, 20)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_qtysx")
@@ -85,7 +82,7 @@ texture = ExtResource("7_b4gxh")
 centered = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(640, 513)
+position = Vector2(659, 356.5)
 zoom = Vector2(1.5, 1.5)
 
 [node name="Environment" type="Node2D" parent="."]
@@ -94,14 +91,9 @@ zoom = Vector2(1.5, 1.5)
 
 [node name="Moving" type="Node2D" parent="Environment"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Moving"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Moving/StaticBody2D"]
-position = Vector2(638, 384)
-shape = SubResource("RectangleShape2D_lmt78")
-
 [node name="Player" parent="." instance=ExtResource("11_pacdj")]
 position = Vector2(200, 334)
+scale = Vector2(1.5, 1.5)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 layer = 99

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var gravity = 1600
-@export var jump_power = 600
+@export var jump_power = 800
 @export var camera2D: Camera2D
 
 @onready var sprite = $AnimatedSprite2D
@@ -46,7 +46,7 @@ func _physics_process(delta):
 				sprite.play("jump")
 			#else:
 				#sprite.play('double jump')
-		if Input.is_action_just_released("jump") and velocity.y < 0:
+		if Input.is_action_just_released("jump") and velocity.y < -jump_power/2:
 			velocity.y = -jump_power/2
 
 	move_and_slide()

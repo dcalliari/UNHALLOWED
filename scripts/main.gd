@@ -7,24 +7,27 @@ extends Node2D
 @onready var player = $Player
 
 var platform = preload("res://scenes/platform.tscn")
+var platform_big = preload("res://scenes/platform_big.tscn")
+var platform_small = preload("res://scenes/platform_small.tscn")
 
 var rng = RandomNumberGenerator.new()
 var last_platform_position = Vector2.ZERO
 var next_spawn_time = 0
 var distance = 0
 var prev_distance = 1.0
+var max_speed = 1000
+var min_speed = 250
 
 func _ready():
 	rng.randomize()
 
 func _process(delta):
 	distance += 0.00003 * world_speed
-	print(world_speed)
 	
 	if snapped(distance, 0) == prev_distance:
 		prev_distance += 1
-		if world_speed < 800:
-			world_speed += 2
+		if world_speed < max_speed:
+			world_speed += 1
 
 	# Spawn a new platform
 	if Time.get_ticks_msec() > next_spawn_time:
@@ -47,10 +50,10 @@ func _spawn_next_platform():
 
 	# Set position of new platform
 	if last_platform_position == Vector2.ZERO:
-		new_platform.position = Vector2(400, 0)
+		new_platform.position = Vector2(300, 384)
 	else:
-		var x = last_platform_position.x + rng.randi_range(450, 550) # Test values
-		var y = clamp(last_platform_position.y + rng.randi_range(-150, 150), 200, 1000) # Test values
+		var x = last_platform_position.x + rng.randi_range(1200, 1400) # Test values
+		var y = clamp(last_platform_position.y + rng.randi_range(-150, 150), 200, 400) # Test values
 		new_platform.position = Vector2(x, y)
 
 	# Add platform to moving environment
@@ -66,10 +69,10 @@ func _physics_process(delta):
 
 func hit(value):
 	player.is_hit()
-	if world_speed / 2 > 250:
+	if world_speed / 2 > min_speed:
 		world_speed = world_speed / 2
 	else:
-		world_speed = 250
+		world_speed = min_speed
 
 func speed():
 	return world_speed
