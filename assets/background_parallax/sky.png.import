@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw7lkf2jp2p5c"
-path="res://.godot/imported/road.png-677e8f42e3d87c01d188664996a1b71f.ctex"
+uid="uid://b11tjd0lty84y"
+path="res://.godot/imported/sky.png-6e2578cde529e44cd981b70ad0614bbf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Layers/road.png"
-dest_files=["res://.godot/imported/road.png-677e8f42e3d87c01d188664996a1b71f.ctex"]
+source_file="res://assets/background_parallax/sky.png"
+dest_files=["res://.godot/imported/sky.png-6e2578cde529e44cd981b70ad0614bbf.ctex"]
 
 [params]
 

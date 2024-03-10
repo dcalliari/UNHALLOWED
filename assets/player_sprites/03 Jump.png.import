@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc13602ht3gto"
-path="res://.godot/imported/clouds_bg.png-48274f64db113f12e02ec618a61452ef.ctex"
+uid="uid://camggur34u0dd"
+path="res://.godot/imported/03 Jump.png-acc9293976a99ee2329ef1a684c0c5ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Layers/clouds_bg.png"
-dest_files=["res://.godot/imported/clouds_bg.png-48274f64db113f12e02ec618a61452ef.ctex"]
+source_file="res://assets/player_sprites/03 Jump.png"
+dest_files=["res://.godot/imported/03 Jump.png-acc9293976a99ee2329ef1a684c0c5ff.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bud5oq3mtygr8"
-path="res://.godot/imported/04 Roll.png-54a30171b285009f27b8e05af9eaf9d5.ctex"
+uid="uid://cc13602ht3gto"
+path="res://.godot/imported/clouds_bg.png-aa35b03bf65eb2d8535dda1fafce086b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PlayerSprites/04 Roll.png"
-dest_files=["res://.godot/imported/04 Roll.png-54a30171b285009f27b8e05af9eaf9d5.ctex"]
+source_file="res://assets/background_parallax/clouds_bg.png"
+dest_files=["res://.godot/imported/clouds_bg.png-aa35b03bf65eb2d8535dda1fafce086b.ctex"]
 
 [params]
 

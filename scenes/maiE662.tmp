@@ -1,0 +1,119 @@
+[gd_scene load_steps=11 format=3 uid="uid://u20ycfg0c02j"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_qtysx"]
+[ext_resource type="Script" path="res://scripts/parallax.gd" id="1_yspxj"]
+[ext_resource type="Texture2D" uid="uid://c0sp8umoybceu" path="res://assets/background_parallax/sky_lightened.png" id="2_odjg6"]
+[ext_resource type="Texture2D" uid="uid://cc13602ht3gto" path="res://assets/background_parallax/clouds_bg.png" id="3_7kth5"]
+[ext_resource type="Texture2D" uid="uid://bb545jkh0866p" path="res://assets/background_parallax/cloud_lonely.png" id="4_018tn"]
+[ext_resource type="Texture2D" uid="uid://ccglaxrd5rs3d" path="res://assets/background_parallax/glacial_mountains_lightened.png" id="4_ttfc6"]
+[ext_resource type="Texture2D" uid="uid://chj208fpcvuxh" path="res://assets/background_parallax/clouds_mg_3.png" id="5_nxbr1"]
+[ext_resource type="Texture2D" uid="uid://dri0yb2fkqgef" path="res://assets/background_parallax/clouds_mg_2.png" id="6_1qobk"]
+[ext_resource type="Texture2D" uid="uid://bt8y7dyi8wun7" path="res://assets/background_parallax/clouds_mg_1_lightened.png" id="7_b4gxh"]
+[ext_resource type="PackedScene" uid="uid://dsqwmgylicqrd" path="res://scenes/player.tscn" id="11_pacdj"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_qtysx")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scale = Vector2(5, 5)
+transform = Transform2D(5, 0, 0, 5, 0, 0)
+script = ExtResource("1_yspxj")
+
+[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky"]
+texture_filter = 1
+texture = ExtResource("2_odjg6")
+centered = false
+
+[node name="CloudsBG" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0)
+motion_mirroring = Vector2(384, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CloudsBG"]
+texture_filter = 1
+texture = ExtResource("3_7kth5")
+centered = false
+
+[node name="LonelyCloud" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(2, 0)
+motion_mirroring = Vector2(384, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/LonelyCloud"]
+texture_filter = 1
+texture = ExtResource("4_018tn")
+centered = false
+
+[node name="Mountains" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(1.5, 0)
+motion_mirroring = Vector2(384, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Mountains"]
+texture_filter = 1
+texture = ExtResource("4_ttfc6")
+centered = false
+
+[node name="CloudsMG3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(2.5, 0)
+motion_mirroring = Vector2(384, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CloudsMG3"]
+texture_filter = 1
+texture = ExtResource("5_nxbr1")
+centered = false
+
+[node name="CloudsMG2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(3.5, 0)
+motion_mirroring = Vector2(384, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CloudsMG2"]
+texture_filter = 1
+texture = ExtResource("6_1qobk")
+centered = false
+
+[node name="CloudsMG1" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(4.5, 0)
+motion_mirroring = Vector2(384, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CloudsMG1"]
+texture_filter = 1
+texture = ExtResource("7_b4gxh")
+centered = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 513)
+zoom = Vector2(1.5, 1.5)
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="Static" type="Node2D" parent="Environment"]
+
+[node name="Moving" type="Node2D" parent="Environment"]
+
+[node name="Player" parent="." instance=ExtResource("11_pacdj")]
+position = Vector2(200, 334)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 99
+
+[node name="UI" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Distance" type="Label" parent="HUD/UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -148.0
+offset_top = 26.0
+offset_right = -41.0
+offset_bottom = 81.0
+grow_horizontal = 0
+text = "100m"
+horizontal_alignment = 2

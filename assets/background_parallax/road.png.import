@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdoq055ulmghf"
-path="res://.godot/imported/glacial_mountains.png-3a3d67ebbf5021a23e5304574d7505a0.ctex"
+uid="uid://cw7lkf2jp2p5c"
+path="res://.godot/imported/road.png-c64b6beec16a9379671bb291990a887b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Layers/glacial_mountains.png"
-dest_files=["res://.godot/imported/glacial_mountains.png-3a3d67ebbf5021a23e5304574d7505a0.ctex"]
+source_file="res://assets/background_parallax/road.png"
+dest_files=["res://.godot/imported/road.png-c64b6beec16a9379671bb291990a887b.ctex"]
 
 [params]
 
