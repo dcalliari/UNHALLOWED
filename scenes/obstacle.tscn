@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://js63da22banb"]
+
+[ext_resource type="Script" path="res://scripts/obstacle.gd" id="1_0cqto"]
+[ext_resource type="Texture2D" uid="uid://cs5htn4qa8b1i" path="res://icon.svg" id="1_t1laf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wluno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_t1laf")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_t1laf")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"hit",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_t1laf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_scibo"]
+size = Vector2(128, 128)
+
+[node name="Obstacle" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_0cqto")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wluno")
+animation = &"hit"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_scibo")
