@@ -7,6 +7,7 @@ extends Node2D
 @onready var player = $Player
 
 var platform = preload("res://scenes/platform.tscn")
+var platform_obstacle = preload("res://scenes/platform_obstacle.tscn")
 var platform_big = preload("res://scenes/platform_big.tscn")
 var platform_small = preload("res://scenes/platform_small.tscn")
 
@@ -42,8 +43,8 @@ func _spawn_next_platform():
 		platform,
 		platform,
 		platform,
-		platform,
-		platform,
+		platform_obstacle,
+		platform_obstacle,
 	]
 	var random_platform = platforms.pick_random()
 	var new_platform = random_platform.instantiate()

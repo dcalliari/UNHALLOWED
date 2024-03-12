@@ -94,6 +94,7 @@ zoom = Vector2(1.5, 1.5)
 [node name="Player" parent="." instance=ExtResource("11_pacdj")]
 position = Vector2(200, 334)
 scale = Vector2(1.5, 1.5)
+jump_power = 1000
 
 [node name="HUD" type="CanvasLayer" parent="."]
 layer = 99
