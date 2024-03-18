@@ -1,6 +1,8 @@
 extends Node2D
 
-@export var world_speed = 300
+signal game_over
+
+@export var world_speed = 400
 
 @onready var moving_environment = $Environment/Moving
 @onready var distance_label = $HUD/UI/Distance
@@ -8,21 +10,24 @@ extends Node2D
 
 var platform = preload("res://scenes/platform.tscn")
 var platform_obstacle = preload("res://scenes/platform_obstacle.tscn")
-var platform_big = preload("res://scenes/platform_big.tscn")
-var platform_small = preload("res://scenes/platform_small.tscn")
+var platform_enemy = preload("res://scenes/platform_enemy.tscn")
 
 var rng = RandomNumberGenerator.new()
 var last_platform_position = Vector2.ZERO
 var next_spawn_time = 0
 var distance = 0
 var prev_distance = 1.0
-var max_speed = 1000
-var min_speed = 250
+var max_speed = 400
+var min_speed = 400
 
 func _ready():
 	rng.randomize()
+	player.player_died.connect(_on_player_died)
 
 func _process(delta):
+	if not player.active:
+		return
+
 	distance += 0.00003 * world_speed
 	
 	if snapped(distance, 0) == prev_distance:
@@ -42,19 +47,17 @@ func _spawn_next_platform():
 		platform,
 		platform,
 		platform,
-		platform,
-		platform_obstacle,
-		platform_obstacle,
+		platform_enemy
 	]
 	var random_platform = platforms.pick_random()
 	var new_platform = random_platform.instantiate()
 
 	# Set position of new platform
 	if last_platform_position == Vector2.ZERO:
-		new_platform.position = Vector2(300, 384)
+		new_platform.position = Vector2(300, 550)
 	else:
-		var x = last_platform_position.x + rng.randi_range(1200, 1400) # Test values
-		var y = clamp(last_platform_position.y + rng.randi_range(-150, 150), 200, 400) # Test values
+		var x = last_platform_position.x + rng.randi_range(2000, 2400) # Test values
+		var y = clamp(last_platform_position.y + rng.randi_range(-150, 150), 350, 700) # Test values
 		new_platform.position = Vector2(x, y)
 
 	# Add platform to moving environment
@@ -65,6 +68,9 @@ func _spawn_next_platform():
 	next_spawn_time += world_speed
 
 func _physics_process(delta):
+	if not player.active:
+		return
+
 	#Move plataforms left
 	moving_environment.position.x -= world_speed * delta
 
@@ -77,3 +83,6 @@ func hit(value):
 
 func speed():
 	return world_speed
+
+func _on_player_died():
+	emit_signal("game_over")

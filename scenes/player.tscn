@@ -159,6 +159,7 @@ size = Vector2(38, 23)
 position = Vector2(-1, 0)
 collision_layer = 2
 script = ExtResource("1_uqe34")
+gravity = 3000
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -176,10 +177,3 @@ shape = SubResource("RectangleShape2D_4q3tt")
 position = Vector2(2, 20.5)
 shape = SubResource("RectangleShape2D_7ivce")
 disabled = true
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(306, 15)
-enabled = false
-zoom = Vector2(1.5, 1.5)
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
