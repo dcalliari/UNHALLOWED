@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://u20ycfg0c02j"]
+[gd_scene load_steps=16 format=3 uid="uid://u20ycfg0c02j"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_qtysx"]
 [ext_resource type="Script" path="res://scripts/parallax.gd" id="1_yspxj"]
@@ -15,8 +15,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtjp"]
 size = Vector2(38, 727)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6cros"]
+size = Vector2(24, 745)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gjy1a"]
-size = Vector2(1932, 20)
+size = Vector2(1325, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akjwc"]
+size = Vector2(1324, 23)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_qtysx")
@@ -137,17 +143,21 @@ horizontal_alignment = 2
 position = Vector2(9, 353.5)
 shape = SubResource("RectangleShape2D_hqtjp")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1304, 353.5)
+shape = SubResource("RectangleShape2D_6cros")
+
 [node name="GameOver" type="Area2D" parent="."]
 collision_layer = 4
 script = ExtResource("11_1l0bt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameOver"]
-position = Vector2(956, 725)
+position = Vector2(652.5, 725)
 shape = SubResource("RectangleShape2D_gjy1a")
 
 [node name="Hitbox" type="Area2D" parent="GameOver"]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameOver/Hitbox"]
-position = Vector2(956, 725)
-shape = SubResource("RectangleShape2D_gjy1a")
+position = Vector2(657, 726.5)
+shape = SubResource("RectangleShape2D_akjwc")
