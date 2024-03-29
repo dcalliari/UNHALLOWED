@@ -5,7 +5,7 @@ signal player_died
 @export var gravity = 3200
 @export var jump_power = 600
 @export var camera2D: Camera2D
-@export var speed = 600
+@export var speed = 700
 
 @onready var sprite = $AnimatedSprite2D
 @onready var camera = $"/root/Main/Camera2D"
