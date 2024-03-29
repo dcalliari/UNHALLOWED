@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://u20ycfg0c02j"]
+[gd_scene load_steps=16 format=3 uid="uid://u20ycfg0c02j"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_qtysx"]
 [ext_resource type="Script" path="res://scripts/parallax.gd" id="1_yspxj"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://dri0yb2fkqgef" path="res://assets/background_parallax/clouds_mg_2.png" id="6_1qobk"]
 [ext_resource type="Texture2D" uid="uid://bt8y7dyi8wun7" path="res://assets/background_parallax/clouds_mg_1_lightened.png" id="7_b4gxh"]
 [ext_resource type="Script" path="res://scripts/play_area.gd" id="10_hqnw2"]
-[ext_resource type="Script" path="res://scenes/game_over.gd" id="11_1l0bt"]
 [ext_resource type="PackedScene" uid="uid://dsqwmgylicqrd" path="res://scenes/player.tscn" id="11_pacdj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n2u8a"]
@@ -22,11 +21,8 @@ size = Vector2(38, 727)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6cros"]
 size = Vector2(24, 745)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjy1a"]
-size = Vector2(1325, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_akjwc"]
-size = Vector2(1324, 23)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ewfjn"]
+size = Vector2(2011, 20)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_qtysx")
@@ -124,20 +120,12 @@ shape = SubResource("RectangleShape2D_hqtjp")
 position = Vector2(1304, 353.5)
 shape = SubResource("RectangleShape2D_6cros")
 
-[node name="GameOver" type="Area2D" parent="Environment/Static"]
-collision_layer = 4
-script = ExtResource("11_1l0bt")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Static/GameOver"]
-position = Vector2(652.5, 748)
-shape = SubResource("RectangleShape2D_gjy1a")
-
-[node name="Hitbox" type="Area2D" parent="Environment/Static/GameOver"]
+[node name="Ground" type="Area2D" parent="Environment/Static"]
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Static/GameOver/Hitbox"]
-position = Vector2(657, 748.5)
-shape = SubResource("RectangleShape2D_akjwc")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Static/Ground"]
+position = Vector2(955.5, 720)
+shape = SubResource("RectangleShape2D_ewfjn")
 
 [node name="Moving" type="Node2D" parent="Environment"]
 
@@ -159,6 +147,17 @@ offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Score" type="Label" parent="HUD/UI"]
+layout_mode = 1
+offset_left = 32.0
+offset_top = 26.0
+offset_right = 185.0
+offset_bottom = 81.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 40
+text = "Temp: 0"
+
 [node name="Distance" type="Label" parent="HUD/UI"]
 layout_mode = 1
 anchors_preset = 1
@@ -174,3 +173,22 @@ theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 40
 text = "100m"
 horizontal_alignment = 2
+
+[node name="GameOver" type="Label" parent="HUD/UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -37.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 30
+text = "Game Over.
+You traveled the distance of %s meters!
+Press 'Jump' to restart."
+horizontal_alignment = 1

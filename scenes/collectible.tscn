@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjsjcjgmv3yni"]
+
+[ext_resource type="Script" path="res://scripts/collectible.gd" id="1_v1o4j"]
+[ext_resource type="Texture2D" uid="uid://cs5htn4qa8b1i" path="res://icon.svg" id="2_i1ijc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a12wq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_i1ijc")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"collected",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_i1ijc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5ac1"]
+size = Vector2(132, 130)
+
+[node name="Collectible" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_v1o4j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_a12wq")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v5ac1")
