@@ -4,24 +4,25 @@
 [ext_resource type="PackedScene" uid="uid://js63da22banb" path="res://scenes/obstacle.tscn" id="2_n64y0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ri424"]
-size = Vector2(1095, 1085)
+size = Vector2(1874, 1085)
 
 [node name="StaticBody2D" type="StaticBody2D"]
+position = Vector2(224, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(323.752, 524.628)
-scale = Vector2(8.59762, 8.59762)
+position = Vector2(712.752, 524.628)
+scale = Vector2(14.6757, 8.59762)
 texture = ExtResource("1_rrq8k")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(324.5, 530.5)
+position = Vector2(714, 530.5)
 shape = SubResource("RectangleShape2D_ri424")
 
 [node name="Obstacle" parent="." instance=ExtResource("2_n64y0")]
-position = Vector2(54, -38)
+position = Vector2(446, -38)
 scale = Vector2(0.4, 0.4)
 
 [node name="Obstacle2" parent="." instance=ExtResource("2_n64y0")]
-position = Vector2(385, -38)
+position = Vector2(961, -38)
 scale = Vector2(0.4, 0.4)

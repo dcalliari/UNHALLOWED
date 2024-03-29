@@ -2,7 +2,7 @@ extends Node2D
 
 signal game_over
 
-@export var world_speed = 400
+@export var world_speed = 900
 
 @onready var moving_environment = $Environment/Moving
 @onready var distance_label = $HUD/UI/Distance
@@ -11,14 +11,15 @@ signal game_over
 var platform = preload("res://scenes/platform.tscn")
 var platform_obstacle = preload("res://scenes/platform_obstacle.tscn")
 var platform_enemy = preload("res://scenes/platform_enemy.tscn")
+var platform_moving_enemy = preload("res://scenes/platform_moving_enemy.tscn")
 
 var rng = RandomNumberGenerator.new()
 var last_platform_position = Vector2.ZERO
 var next_spawn_time = 0
 var distance = 0
 var prev_distance = 1.0
-var max_speed = 400
-var min_speed = 400
+var max_speed = world_speed
+var min_speed = world_speed
 
 func _ready():
 	rng.randomize()
@@ -45,9 +46,10 @@ func _process(delta):
 func _spawn_next_platform():
 	var platforms =[
 		platform,
-		platform,
-		platform,
-		platform_enemy
+		platform_moving_enemy,
+		platform_obstacle,
+		platform_enemy,
+		platform
 	]
 	var random_platform = platforms.pick_random()
 	var new_platform = random_platform.instantiate()
