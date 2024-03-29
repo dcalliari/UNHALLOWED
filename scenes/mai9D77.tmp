@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://u20ycfg0c02j"]
+[gd_scene load_steps=16 format=3 uid="uid://u20ycfg0c02j"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_qtysx"]
 [ext_resource type="Script" path="res://scripts/parallax.gd" id="1_yspxj"]
@@ -9,12 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://chj208fpcvuxh" path="res://assets/background_parallax/clouds_mg_3.png" id="5_nxbr1"]
 [ext_resource type="Texture2D" uid="uid://dri0yb2fkqgef" path="res://assets/background_parallax/clouds_mg_2.png" id="6_1qobk"]
 [ext_resource type="Texture2D" uid="uid://bt8y7dyi8wun7" path="res://assets/background_parallax/clouds_mg_1_lightened.png" id="7_b4gxh"]
-[ext_resource type="Script" path="res://scripts/play_area.gd" id="10_hqnw2"]
 [ext_resource type="Script" path="res://scenes/game_over.gd" id="11_1l0bt"]
 [ext_resource type="PackedScene" uid="uid://dsqwmgylicqrd" path="res://scenes/player.tscn" id="11_pacdj"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2u8a"]
-size = Vector2(1822, 1231)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtjp"]
 size = Vector2(38, 727)
@@ -30,6 +26,7 @@ size = Vector2(1324, 23)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_qtysx")
+world_speed = 900
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scale = Vector2(5, 5)
@@ -106,21 +103,13 @@ zoom = Vector2(1.5, 1.5)
 
 [node name="Static" type="Node2D" parent="Environment"]
 
-[node name="PlayArea" type="Area2D" parent="Environment/Static"]
-collision_mask = 4
-script = ExtResource("10_hqnw2")
+[node name="PlayArea" type="StaticBody2D" parent="Environment/Static"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Static/PlayArea"]
-position = Vector2(668, 366.5)
-shape = SubResource("RectangleShape2D_n2u8a")
-
-[node name="Bounds" type="StaticBody2D" parent="Environment/Static"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Static/Bounds"]
 position = Vector2(9, 353.5)
 shape = SubResource("RectangleShape2D_hqtjp")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Environment/Static/Bounds"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Environment/Static/PlayArea"]
 position = Vector2(1304, 353.5)
 shape = SubResource("RectangleShape2D_6cros")
 
@@ -129,14 +118,14 @@ collision_layer = 4
 script = ExtResource("11_1l0bt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Static/GameOver"]
-position = Vector2(652.5, 748)
+position = Vector2(652.5, 725)
 shape = SubResource("RectangleShape2D_gjy1a")
 
 [node name="Hitbox" type="Area2D" parent="Environment/Static/GameOver"]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Static/GameOver/Hitbox"]
-position = Vector2(657, 748.5)
+position = Vector2(657, 726.5)
 shape = SubResource("RectangleShape2D_akjwc")
 
 [node name="Moving" type="Node2D" parent="Environment"]
@@ -154,8 +143,6 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 5.0
-offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 

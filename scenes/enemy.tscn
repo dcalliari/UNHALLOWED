@@ -20,7 +20,7 @@ size = Vector2(128, 128)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kmmou"]
 size = Vector2(129, 156)
 
-[node name="Enemy" type="Area2D"]
+[node name="Enemy" type="Area2D" groups=["enemy"]]
 collision_layer = 4
 script = ExtResource("1_s12fs")
 
