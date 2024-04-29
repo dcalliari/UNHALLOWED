@@ -1,14 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://u20ycfg0c02j"]
+[gd_scene load_steps=10 format=3 uid="uid://u20ycfg0c02j"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_qtysx"]
 [ext_resource type="PackedScene" uid="uid://bfx4htsu3b1hg" path="res://scenes/background.tscn" id="2_by36m"]
 [ext_resource type="PackedScene" uid="uid://bpbdorb40rry3" path="res://scenes/platform.tscn" id="4_jx0mo"]
-[ext_resource type="PackedScene" uid="uid://cu7rsjpekycc7" path="res://scenes/hud.tscn" id="6_u10mc"]
 [ext_resource type="Script" path="res://scripts/play_area.gd" id="10_hqnw2"]
 [ext_resource type="PackedScene" uid="uid://dsqwmgylicqrd" path="res://scenes/player.tscn" id="11_pacdj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n2u8a"]
-size = Vector2(2255, 1435)
+size = Vector2(2057, 1201)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtjp"]
 size = Vector2(28, 1096)
@@ -21,6 +20,7 @@ size = Vector2(2011, 45)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_qtysx")
+world_speed = null
 
 [node name="Background" parent="." instance=ExtResource("2_by36m")]
 
@@ -32,8 +32,7 @@ position = Vector2(960, 540)
 [node name="Static" type="Node2D" parent="Environment"]
 
 [node name="PlayArea" type="Area2D" parent="Environment/Static"]
-collision_layer = 7
-collision_mask = 7
+collision_mask = 4
 script = ExtResource("10_hqnw2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Static/PlayArea"]
@@ -66,5 +65,64 @@ position = Vector2(1929, 538)
 [node name="Player" parent="." instance=ExtResource("11_pacdj")]
 position = Vector2(168, 760)
 scale = Vector2(3, 3)
+jump_power = 1000
 
-[node name="HUD" parent="." instance=ExtResource("6_u10mc")]
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 99
+visible = false
+
+[node name="UI" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Score" type="Label" parent="HUD/UI"]
+layout_mode = 1
+offset_left = 32.0
+offset_top = 26.0
+offset_right = 185.0
+offset_bottom = 81.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 40
+text = "Temp: 0"
+
+[node name="Distance" type="Label" parent="HUD/UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -148.0
+offset_top = 26.0
+offset_right = -41.0
+offset_bottom = 81.0
+grow_horizontal = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 40
+text = "100m"
+horizontal_alignment = 2
+
+[node name="GameOver" type="Label" parent="HUD/UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -37.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 30
+text = "Game Over.
+You traveled the distance of %s meters!
+Press 'Jump' to restart."
+horizontal_alignment = 1
