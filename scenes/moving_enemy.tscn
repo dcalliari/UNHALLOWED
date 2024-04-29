@@ -1,20 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://bso4gj7gxivv"]
+[gd_scene load_steps=10 format=3 uid="uid://bso4gj7gxivv"]
 
 [ext_resource type="Script" path="res://scripts/moving_enemy.gd" id="1_uc766"]
-[ext_resource type="Texture2D" uid="uid://cs5htn4qa8b1i" path="res://icon.svg" id="2_qifnk"]
+[ext_resource type="Texture2D" uid="uid://bywmi8dlnxd2q" path="res://assets/img/bat.png" id="2_qedto"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qabgk"]
+atlas = ExtResource("2_qedto")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t07re"]
+atlas = ExtResource("2_qedto")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iq612"]
+atlas = ExtResource("2_qedto")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lx385"]
+atlas = ExtResource("2_qedto")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i1r2o"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_qifnk")
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_qifnk")
-}, {
 "duration": 1.0,
 "texture": null
 }],
@@ -24,7 +31,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_qifnk")
+"texture": SubResource("AtlasTexture_qabgk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t07re")
 }],
 "loop": true,
 "name": &"idle",
@@ -32,7 +42,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_qifnk")
+"texture": SubResource("AtlasTexture_iq612")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lx385")
 }],
 "loop": true,
 "name": &"walk",
@@ -51,10 +64,10 @@ collision_mask = 4
 script = ExtResource("1_uc766")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(-4, 4)
 sprite_frames = SubResource("SpriteFrames_i1r2o")
-animation = &"death"
-frame = 1
-frame_progress = 1.0
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_be67j")

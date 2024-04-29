@@ -30,9 +30,17 @@ func set_active(value):
 		sprite.play("walk")
 
 func _on_body_entered(body):
-	if body.is_in_group("player") and active:
-		player.die()
+	if body.is_in_group("player"):
+		if player.is_attacking:
+			sprite.play("death")
+			sprite.animation_finished.connect(_on_animation_finished)
+
+		if not player.is_attacking:
+			player.die()
 
 func _on_player_died():
 	set_active(false)
 	sprite.play("idle")
+
+func _on_animation_finished():
+	queue_free()

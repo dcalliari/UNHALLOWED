@@ -2,56 +2,44 @@ extends CharacterBody2D
 
 signal player_died
 
-@export var gravity = 3200
-@export var jump_power = 600
+@export var gravity = 3000
+@export var jump_power = 1000
 @export var camera2D: Camera2D
-@export var speed = 500
+@export var speed = 1200
 
+@onready var main = $"/root/Main"
 @onready var sprite = $AnimatedSprite2D
 @onready var camera = $"/root/Main/Camera2D"
 @onready var collision = $CollisionShape2D
-@onready var collisionRolling = $CollisionShapeRolling
-@onready var collisionAttacking = $CollisionShapeAttacking
-
 
 var active = true
 var jumps_remaining = 1 # Change for double jump
 var attacks_remaining = 3
 var was_jumping = false
 var was_hit = false
+var is_attacking = false
 
 func _ready():
-	pass
+	sprite.animation_finished.connect(_on_animation_finished)
 
 func _physics_process(delta):
 	velocity.y += gravity * delta
 
 	if active:
-		# Update camera position
-		# camera.position = position + Vector2(480, 0)
-
 		# Reset after landing
 		if is_on_floor() and was_jumping:
-			if was_jumping:
-				was_jumping = false
-				jumps_remaining = 1
-				sprite.play("run")
+			was_jumping = false
+			jumps_remaining = 1
 
-		# Handle hit
-		if was_hit and not sprite.is_playing():
-			was_hit = false
-			sprite.play("run")
-			collision.set_disabled(false)
-			collisionRolling.set_disabled(true)
-		
 		# Handle attacking
 		if Input.is_action_just_pressed("attack") and attacks_remaining > 0:
+			is_attacking = true
 			attacks_remaining -= 1
 			if attacks_remaining == 0:
-				sprite.play("attack3")
+				sprite.play("attack")
 				attacks_remaining = 3
 			elif attacks_remaining == 1:
-				sprite.play("attack2")
+				sprite.play("attack")
 			elif attacks_remaining == 2:
 				sprite.play("attack")
 		
@@ -61,7 +49,8 @@ func _physics_process(delta):
 			was_jumping = true
 			velocity.y = -jump_power
 			if jumps_remaining == 0:
-				sprite.play("jump")
+				if is_attacking == false:
+					sprite.play("jump")
 			#else:
 				#sprite.play('double jump')
 		if Input.is_action_just_released("jump") and velocity.y < -jump_power/2.0:
@@ -75,17 +64,13 @@ func _physics_process(delta):
 			velocity.x = move_toward(velocity.x, 0, speed)
 	move_and_slide()
 
-
-func is_hit():
-	if not was_jumping:
-		sprite.play("roll")
-		collision.set_disabled(true)
-		collisionRolling.set_disabled(false)
-		was_hit = true
+func _on_animation_finished():
+	if sprite.animation == "attack" or "attack" or "attack":
+		is_attacking = false
+	sprite.play('run')
 
 func die():
 	sprite.stop()
 	active = false
 	collision.set_deferred("disabled", true)
-	collisionRolling.set_deferred("disabled", true)
 	emit_signal("player_died")

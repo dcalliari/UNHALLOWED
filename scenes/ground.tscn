@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://byl4jxtlcrp3o"]
+
+[ext_resource type="Texture2D" uid="uid://bkqmqomlci0df" path="res://assets/img/cenario_1_chao.png" id="1_ppq2u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v2oc0"]
+size = Vector2(1152, 68)
+
+[node name="Ground" type="StaticBody2D"]
+scale = Vector2(3.3, 3.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(576, 162)
+texture = ExtResource("1_ppq2u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(576, 290)
+shape = SubResource("RectangleShape2D_v2oc0")
+debug_color = Color(0, 0.6, 0.701961, 0)
