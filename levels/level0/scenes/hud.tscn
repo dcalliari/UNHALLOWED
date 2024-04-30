@@ -30,7 +30,6 @@ theme_override_font_sizes/font_size = 40
 text = "temp:"
 
 [node name="Distance" type="Label" parent="UI"]
-visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 1

@@ -5,8 +5,9 @@ signal player_died
 @export var gravity = 3000
 @export var jump_power = 1000
 @export var camera2D: Camera2D
-@export var speed = 1200
+@export var speed = 800
 
+@onready var player = $"."
 @onready var main = $"/root/Main"
 @onready var sprite = $AnimatedSprite2D
 @onready var camera = $"/root/Main/Camera2D"
@@ -18,6 +19,7 @@ var attacks_remaining = 3
 var was_jumping = false
 var was_hit = false
 var is_attacking = false
+var is_god = false
 
 func _ready():
 	sprite.animation_finished.connect(_on_animation_finished)
@@ -30,6 +32,13 @@ func _physics_process(delta):
 		if is_on_floor() and was_jumping:
 			was_jumping = false
 			jumps_remaining = 1
+
+		if Input.is_action_just_pressed("god"):
+			if is_god:
+				is_god = false
+				player.add_to_group("player")
+			else:
+				player.remove_from_group("player")
 
 		# Handle attacking
 		if Input.is_action_just_pressed("attack") and attacks_remaining > 0:
@@ -53,8 +62,8 @@ func _physics_process(delta):
 					sprite.play("jump")
 			#else:
 				#sprite.play('double jump')
-		if Input.is_action_just_released("jump") and velocity.y < -jump_power/2.0:
-			velocity.y = -jump_power/2.0
+		if Input.is_action_just_released("jump") and velocity.y < - jump_power / 2.0:
+			velocity.y = -jump_power / 2.0
 
 		# Handle walk
 		var direction = Input.get_axis("ui_left", "ui_right")

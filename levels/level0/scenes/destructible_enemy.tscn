@@ -78,7 +78,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_scibo"]
 size = Vector2(96, 128)
 
-[node name="DestructibleEnemy" type="Area2D" groups=["enemy"]]
+[node name="DestructibleEnemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
 script = ExtResource("1_qf0s5")
 
