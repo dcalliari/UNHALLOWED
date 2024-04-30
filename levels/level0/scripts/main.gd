@@ -7,14 +7,15 @@ signal game_over
 @onready var moving = $Environment/Moving
 @onready var distance_label = $HUD/UI/Distance
 @onready var score_label = $HUD/UI/Score
+@onready var start_label = $HUD/UI/Start
+@onready var clear_label = $HUD/UI/Clear
 @onready var player = $Player
 @onready var ground = $Environment/Static/Ground
-@onready var start_label = $HUD/UI/Start
 
-var platform = preload("res://scenes/platform.tscn")
-var enemy = preload("res://scenes/enemy.tscn")
-var destructible_enemy = preload("res://scenes/destructible_enemy.tscn")
-var moving_enemy = preload("res://scenes/moving_enemy.tscn")
+var platform = preload ("res://levels/level0/scenes/platform.tscn")
+var enemy = preload ("res://levels/level0/scenes/enemy.tscn")
+var destructible_enemy = preload ("res://levels/level0/scenes/destructible_enemy.tscn")
+var moving_enemy = preload ("res://levels/level0/scenes/moving_enemy.tscn")
 
 var rng = RandomNumberGenerator.new()
 var last_platform_position = Vector2.ZERO
@@ -27,7 +28,7 @@ var score = 37
 
 var obstacle_types := [enemy, enemy, destructible_enemy]
 var last_obstacle
-var screen_size : Vector2
+var screen_size: Vector2
 var moving_enemy_heights := [600, 750]
 
 func _ready():
@@ -42,6 +43,10 @@ func _process(delta):
 			get_tree().reload_current_scene()
 		return
 
+	if snapped(distance, 0) > 100:
+		clear_label.set_visible(true)
+		player.clear()
+		
 	distance += 0.00005 * world_speed
 	score -= 0.0003
 	if score <= 30:
@@ -65,7 +70,7 @@ func _spawn_next_platform():
 	var new_platform = platform.instantiate()
 
 	# Set position of new platform
-	new_platform.position = Vector2(last_platform_position.x+3859, 538)
+	new_platform.position = Vector2(last_platform_position.x + 3859, 538)
 
 	# Add platform to moving environment
 	moving.add_child(new_platform)
@@ -83,22 +88,22 @@ func _generate_obstacles():
 	else:
 		obs_number = 1
 	if not last_obstacle:
-		var x : int = screen_size.x + distance
-		var y : int = screen_size.y + 70
+		var x: int = screen_size.x + distance
+		var y: int = screen_size.y + 70
 		last_obstacle = obstacle
 		_add_obstacle(obstacle, x, y)
 
 		if obs_number == 2:
 			obstacle = obstacle_type.instantiate()
-			_add_obstacle(obstacle, x+80, y)
+			_add_obstacle(obstacle, x + 80, y)
 	if last_obstacle:
-		var x : int = last_obstacle.position.x + randi_range(550, 800)
-		var y : int = screen_size.y + 70
+		var x: int = last_obstacle.position.x + randi_range(550, 800)
+		var y: int = screen_size.y + 70
 		last_obstacle = obstacle
 		_add_obstacle(obstacle, x, y)
 		if obs_number == 2:
 			obstacle = obstacle_type.instantiate()
-			_add_obstacle(obstacle, x+80, y)
+			_add_obstacle(obstacle, x + 80, y)
 	#if randi_range(1, 10) < 4:
 		#obstacle = moving_enemy.instantiate()
 		#var x : int = screen_size.x + score + 100

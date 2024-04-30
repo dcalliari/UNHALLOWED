@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://bso4gj7gxivv"]
+[gd_scene load_steps=10 format=3 uid="uid://c4yvg47qeadv"]
 
-[ext_resource type="Script" path="res://scripts/moving_enemy.gd" id="1_uc766"]
+[ext_resource type="Script" path="res://levels/infinite/scripts/moving_enemy.gd" id="1_nfhj0"]
 [ext_resource type="Texture2D" uid="uid://bywmi8dlnxd2q" path="res://assets/img/bat.png" id="2_qedto"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qabgk"]
@@ -61,7 +61,7 @@ size = Vector2(186, 195)
 [node name="MovingEnemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 4
-script = ExtResource("1_uc766")
+script = ExtResource("1_nfhj0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

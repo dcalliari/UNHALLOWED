@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cjsjcjgmv3yni"]
 
-[ext_resource type="Script" path="res://scripts/collectible.gd" id="1_v1o4j"]
+[ext_resource type="Script" path="res://levels/infinite/scripts/collectible.gd" id="1_v1o4j"]
 [ext_resource type="Texture2D" uid="uid://cs5htn4qa8b1i" path="res://icon.svg" id="2_i1ijc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a12wq"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cu7rsjpekycc7"]
+[gd_scene load_steps=3 format=3 uid="uid://cu7rsjpekycc7"]
 
 [ext_resource type="FontFile" uid="uid://fu4hnjondoo6" path="res://assets/fonts/OLDLONDON.TTF" id="1_is4ht"]
+[ext_resource type="Script" path="res://levels/infinite/scripts/start_label.gd" id="2_feibb"]
 
 [node name="HUD" type="CanvasLayer"]
 layer = 99
@@ -63,4 +64,24 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_is4ht")
 theme_override_font_sizes/font_size = 80
-text = "press SPACE to play"
+text = "press SPACE to try again"
+script = ExtResource("2_feibb")
+
+[node name="Button" type="Button" parent="UI/Start"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.5
+offset_top = 92.0
+offset_right = 110.5
+offset_bottom = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_is4ht")
+theme_override_font_sizes/font_size = 31
+text = "back to main menu"
+
+[connection signal="pressed" from="UI/Start/Button" to="UI/Start" method="_on_button_pressed"]

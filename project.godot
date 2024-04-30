@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Infinite-Runner"
-run/main_scene="res://scenes/main.tscn"
+config/name="Unhallowed"
+run/main_scene="res://menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
