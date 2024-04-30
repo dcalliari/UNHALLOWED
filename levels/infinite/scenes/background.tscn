@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bfx4htsu3b1hg"]
 
-[ext_resource type="Script" path="res://scripts/background.gd" id="1_8gnri"]
+[ext_resource type="Script" path="res://levels/infinite/scripts/background.gd" id="1_8gnri"]
 [ext_resource type="Texture2D" uid="uid://bc6rt5mh7blk3" path="res://assets/img/background/cenario_1_fundo.png" id="2_l4a3j"]
 [ext_resource type="Texture2D" uid="uid://cp5u34riedovb" path="res://assets/img/background/cenario_1_montanha_costas.png" id="3_56uqx"]
 [ext_resource type="Texture2D" uid="uid://bg5l2bpfjrsv" path="res://assets/img/background/cenario_1_montanha_frente.png" id="4_i8qlv"]

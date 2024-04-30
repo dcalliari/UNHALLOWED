@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://d005fk858km5w"]
+
+[ext_resource type="Script" path="res://levels/level0/scripts/background.gd" id="1_5r81x"]
+[ext_resource type="Texture2D" uid="uid://bc6rt5mh7blk3" path="res://assets/img/background/cenario_1_fundo.png" id="2_8jxne"]
+[ext_resource type="Texture2D" uid="uid://cp5u34riedovb" path="res://assets/img/background/cenario_1_montanha_costas.png" id="3_wdpl6"]
+[ext_resource type="Texture2D" uid="uid://bg5l2bpfjrsv" path="res://assets/img/background/cenario_1_montanha_frente.png" id="4_3mco1"]
+
+[node name="Background" type="ParallaxBackground"]
+scale = Vector2(5, 5)
+transform = Transform2D(5, 0, 0, 5, 0, 0)
+script = ExtResource("1_5r81x")
+
+[node name="CloudsBG" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 0)
+motion_mirroring = Vector2(768, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="CloudsBG"]
+texture_filter = 1
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("2_8jxne")
+centered = false
+
+[node name="LonelyCloud" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(1, 0)
+motion_mirroring = Vector2(768, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="LonelyCloud"]
+texture_filter = 1
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("3_wdpl6")
+centered = false
+
+[node name="Mountains" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(1.5, 0)
+motion_mirroring = Vector2(768, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Mountains"]
+texture_filter = 1
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("4_3mco1")
+centered = false

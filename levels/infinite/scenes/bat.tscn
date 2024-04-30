@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://blxg8oa7c7kwj"]
 
-[ext_resource type="Script" path="res://scripts/bat.gd" id="1_dis21"]
+[ext_resource type="Script" path="res://levels/infinite/scripts/bat.gd" id="1_dis21"]
 [ext_resource type="Texture2D" uid="uid://bywmi8dlnxd2q" path="res://assets/img/bat.png" id="1_dw7ip"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_35p47"]

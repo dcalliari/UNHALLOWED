@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://cssh7miktl8i1"]
+[gd_scene load_steps=13 format=3 uid="uid://cbu6gaqjfeom1"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_0u4ic"]
+[ext_resource type="Script" path="res://levels/infinite/scripts/enemy.gd" id="1_ufvs5"]
 [ext_resource type="Texture2D" uid="uid://d1stvnrckdepc" path="res://assets/img/obstaculo_azul.png" id="2_vtqq0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lr1fq"]
@@ -80,7 +80,7 @@ size = Vector2(96, 128)
 
 [node name="Enemy" type="Area2D" groups=["enemy"]]
 collision_layer = 4
-script = ExtResource("1_0u4ic")
+script = ExtResource("1_ufvs5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

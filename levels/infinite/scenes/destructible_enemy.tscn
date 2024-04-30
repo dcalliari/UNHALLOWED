@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://dsjegthsum8w7"]
+[gd_scene load_steps=13 format=3 uid="uid://f2y1ks1jin1l"]
 
-[ext_resource type="Script" path="res://scripts/destructible_enemy.gd" id="1_dnxcf"]
+[ext_resource type="Script" path="res://levels/infinite/scripts/destructible_enemy.gd" id="1_ky7h7"]
 [ext_resource type="Texture2D" uid="uid://ccl2n2ri1evx3" path="res://assets/img/obstaculo_carmin.png" id="2_6u3tk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u02vc"]
@@ -80,7 +80,7 @@ size = Vector2(96, 128)
 
 [node name="DestructibleEnemy" type="Area2D" groups=["enemy"]]
 collision_layer = 4
-script = ExtResource("1_dnxcf")
+script = ExtResource("1_ky7h7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

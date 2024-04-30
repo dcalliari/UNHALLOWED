@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://u20ycfg0c02j"]
 
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_qtysx"]
-[ext_resource type="PackedScene" uid="uid://bfx4htsu3b1hg" path="res://scenes/background.tscn" id="2_by36m"]
-[ext_resource type="PackedScene" uid="uid://bpbdorb40rry3" path="res://scenes/platform.tscn" id="4_jx0mo"]
-[ext_resource type="PackedScene" uid="uid://cu7rsjpekycc7" path="res://scenes/hud.tscn" id="6_u10mc"]
-[ext_resource type="Script" path="res://scripts/play_area.gd" id="10_hqnw2"]
-[ext_resource type="PackedScene" uid="uid://dsqwmgylicqrd" path="res://scenes/player.tscn" id="11_pacdj"]
+[ext_resource type="Script" path="res://levels/infinite/scripts/main.gd" id="1_qtysx"]
+[ext_resource type="PackedScene" uid="uid://bfx4htsu3b1hg" path="res://levels/infinite/scenes/background.tscn" id="2_by36m"]
+[ext_resource type="PackedScene" uid="uid://bpbdorb40rry3" path="res://levels/infinite/scenes/platform.tscn" id="4_jx0mo"]
+[ext_resource type="PackedScene" uid="uid://cu7rsjpekycc7" path="res://levels/infinite/scenes/hud.tscn" id="6_8veyq"]
+[ext_resource type="Script" path="res://levels/infinite/scripts/play_area.gd" id="10_hqnw2"]
+[ext_resource type="PackedScene" uid="uid://dsqwmgylicqrd" path="res://levels/infinite/scenes/player.tscn" id="11_pacdj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n2u8a"]
 size = Vector2(2255, 1435)
@@ -67,4 +67,4 @@ position = Vector2(1929, 538)
 position = Vector2(168, 760)
 scale = Vector2(3, 3)
 
-[node name="HUD" parent="." instance=ExtResource("6_u10mc")]
+[node name="HUD" parent="." instance=ExtResource("6_8veyq")]
