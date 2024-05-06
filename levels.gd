@@ -31,4 +31,4 @@ func _on_level_3_pressed():
 	get_tree().change_scene_to_file("res://levels/level3/scenes/level3.tscn")
 
 func _on_level_4_pressed():
-	get_tree().change_scene_to_file("res://levels/leve4/scenes/level4.tscn")
+	get_tree().change_scene_to_file("res://levels/level4/scenes/level4.tscn")

@@ -101,6 +101,7 @@ theme_override_font_sizes/font_size = 31
 text = "back to main menu"
 
 [node name="Clear" type="Label" parent="UI"]
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
