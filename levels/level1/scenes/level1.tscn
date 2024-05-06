@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://dkvlegsbi4uur"]
+
+[ext_resource type="Script" path="res://levels/level1/scripts/level1.gd" id="1_hyuas"]
+[ext_resource type="PackedScene" uid="uid://d005fk858km5w" path="res://levels/level1/scenes/background.tscn" id="2_l0bbx"]
+[ext_resource type="Script" path="res://levels/level1/scripts/play_area.gd" id="3_atoka"]
+[ext_resource type="PackedScene" uid="uid://vtpxijgbn0yx" path="res://levels/level1/scenes/platform.tscn" id="4_bg1sl"]
+[ext_resource type="PackedScene" uid="uid://d22j3ov65xpjk" path="res://levels/level1/scenes/player.tscn" id="5_w5ss3"]
+[ext_resource type="PackedScene" uid="uid://dov8nmmfj5bmg" path="res://levels/level1/scenes/hud.tscn" id="6_ys676"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2u8a"]
+size = Vector2(2255, 1435)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtjp"]
+size = Vector2(28, 1096)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6cros"]
+size = Vector2(32, 1108)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ewfjn"]
+size = Vector2(2011, 45)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_hyuas")
+
+[node name="Background" parent="." instance=ExtResource("2_l0bbx")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="Static" type="Node2D" parent="Environment"]
+
+[node name="PlayArea" type="Area2D" parent="Environment/Static"]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("3_atoka")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Static/PlayArea"]
+position = Vector2(955.5, 532.5)
+shape = SubResource("RectangleShape2D_n2u8a")
+debug_color = Color(0.980392, 0, 0.384314, 0)
+
+[node name="Bounds" type="StaticBody2D" parent="Environment/Static"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Static/Bounds"]
+position = Vector2(4, 538)
+shape = SubResource("RectangleShape2D_hqtjp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Environment/Static/Bounds"]
+position = Vector2(1919, 535)
+shape = SubResource("RectangleShape2D_6cros")
+
+[node name="Ground" type="Area2D" parent="Environment/Static"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Static/Ground"]
+position = Vector2(955.5, 1077.5)
+shape = SubResource("RectangleShape2D_ewfjn")
+
+[node name="Moving" type="Node2D" parent="Environment"]
+
+[node name="Platform" parent="Environment/Moving" instance=ExtResource("4_bg1sl")]
+position = Vector2(1929, 538)
+
+[node name="Player" parent="." instance=ExtResource("5_w5ss3")]
+position = Vector2(168, 753)
+scale = Vector2(3, 3)
+
+[node name="HUD" parent="." instance=ExtResource("6_ys676")]

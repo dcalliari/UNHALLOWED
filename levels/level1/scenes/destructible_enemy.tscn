@@ -1,0 +1,99 @@
+[gd_scene load_steps=13 format=3 uid="uid://dsrmdhexunjyt"]
+
+[ext_resource type="Script" path="res://levels/level1/scripts/destructible_enemy.gd" id="1_qf0s5"]
+[ext_resource type="Texture2D" uid="uid://ccl2n2ri1evx3" path="res://assets/img/obstaculo_carmin.png" id="2_du70t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u02vc"]
+atlas = ExtResource("2_du70t")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nss42"]
+atlas = ExtResource("2_du70t")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrvx8"]
+atlas = ExtResource("2_du70t")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txf83"]
+atlas = ExtResource("2_du70t")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q38vk"]
+atlas = ExtResource("2_du70t")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6olrn"]
+atlas = ExtResource("2_du70t")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jeqwi"]
+atlas = ExtResource("2_du70t")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4jfa"]
+atlas = ExtResource("2_du70t")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wluno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u02vc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nss42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrvx8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txf83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q38vk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6olrn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jeqwi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4jfa")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_scibo"]
+size = Vector2(96, 128)
+
+[node name="DestructibleEnemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+script = ExtResource("1_qf0s5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_wluno")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.152775
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_scibo")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
+polygon = PackedVector2Array(-46, 28, 0, -66, 46, 29, 48, 64, -47, 64)
