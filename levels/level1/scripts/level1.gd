@@ -29,8 +29,8 @@ var min_temp = 30
 var temp = 37
 var end = 800
 
-var level1
-var first_time
+var level1: bool
+var save_path = "user://saves/level1.save"
 
 var obstacle_types := [enemy, enemy, destructible_enemy]
 var platforms: Array
@@ -38,7 +38,6 @@ var last_obstacle
 var screen_size: Vector2
 
 func _ready():
-	first_time = true
 	screen_size = get_window().size
 	rng.randomize()
 	player.player_died.connect(_on_player_died)
@@ -54,6 +53,7 @@ func _process(delta):
 	if snapped(distance, 0) > end:
 		player.remove_from_group("player")
 		level1 = true
+		save_data()
 		clear_label.set_visible(true)
 		player.clear()
 
@@ -153,3 +153,7 @@ func _on_ground_body_entered(body):
 
 func retry():
 	get_tree().reload_current_scene()
+
+func save_data():
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	file.store_var(level1)

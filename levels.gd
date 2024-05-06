@@ -1,16 +1,25 @@
 extends Control
 
-var level1
-var level2
-var level3
+var level1: bool
+var level2: bool
+var level3: bool
 
 func _ready():
-	if level1:
-		$Level2.disabled = false
-	if level2:
-		$Level3.disabled = false
-	if level3:
-		$Level4.disabled = false
+	if FileAccess.file_exists("user://saves/level1.save"):
+		var file = FileAccess.open("user://saves/level1.save", FileAccess.READ)
+		level1 = file.get_var()
+		if level1:
+			$Level2.disabled = false
+	if FileAccess.file_exists("user://saves/level2.save"):
+		var file = FileAccess.open("user://saves/level2.save", FileAccess.READ)
+		level2 = file.get_var()
+		if level2:
+			$Level3.disabled = false
+	if FileAccess.file_exists("user://saves/level3.save"):
+		var file = FileAccess.open("user://saves/level3.save", FileAccess.READ)
+		level3 = file.get_var()
+		if level3:
+			$Level4.disabled = false
 
 func _on_level_1_pressed():
 	get_tree().change_scene_to_file("res://levels/level1/scenes/level1.tscn")

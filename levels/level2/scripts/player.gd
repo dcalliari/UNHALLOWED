@@ -33,7 +33,6 @@ func _physics_process(delta):
 		if is_on_floor() and was_jumping:
 			was_jumping = false
 			jumps_remaining = 1
-
 		# Handle attacking
 		if Input.is_action_just_pressed("attack") and attacks_remaining > 0:
 			is_attacking = true

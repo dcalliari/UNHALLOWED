@@ -16,7 +16,6 @@ signal game_over
 var platform = preload ("res://levels/level2/scenes/platform.tscn")
 var enemy = preload ("res://levels/level2/scenes/enemy.tscn")
 var destructible_enemy = preload ("res://levels/level2/scenes/destructible_enemy.tscn")
-var moving_enemy = preload ("res://levels/level2/scenes/moving_enemy.tscn")
 
 var rng = RandomNumberGenerator.new()
 var last_platform_position = Vector2.ZERO
@@ -30,17 +29,15 @@ var min_temp = 30
 var temp = 37
 var end = 800
 
-var level2
-var first_time
+var level2: bool
+var save_path = "user://saves/level2.save"
 
 var obstacle_types := [enemy, enemy, destructible_enemy]
 var platforms: Array
 var last_obstacle
 var screen_size: Vector2
-var moving_enemy_heights := [600, 750]
 
 func _ready():
-	first_time = true
 	screen_size = get_window().size
 	rng.randomize()
 	player.player_died.connect(_on_player_died)
@@ -56,6 +53,7 @@ func _process(delta):
 	if snapped(distance, 0) > end:
 		player.remove_from_group("player")
 		level2 = true
+		save_data()
 		clear_label.set_visible(true)
 		player.clear()
 
@@ -111,11 +109,6 @@ func _generate_obstacles():
 	if not last_obstacle:
 		var x: int = screen_size.x + distance + randi_range( - 100, 50)
 		var y: int = 786
-		#Spawn Moving enemy
-		if randi_range(1, 10) < 5:
-			_add_obstacle(moving_enemy.instantiate(), x, moving_enemy_heights.pick_random())
-		last_obstacle = obstacle
-		_add_obstacle(obstacle, x, y)
 		last_obstacle = obstacle
 		_add_obstacle(obstacle, x, y)
 
@@ -160,3 +153,7 @@ func _on_ground_body_entered(body):
 
 func retry():
 	get_tree().reload_current_scene()
+
+func save_data():
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	file.store_var(level2)
