@@ -101,7 +101,6 @@ theme_override_font_sizes/font_size = 31
 text = "back to main menu"
 
 [node name="Clear" type="Label" parent="UI"]
-visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -117,7 +116,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_k7gdw")
 theme_override_font_sizes/font_size = 80
-text = "you have cleared world 1-1"
+text = "you have cleared world 1-4"
 horizontal_alignment = 1
 script = ExtResource("3_45u41")
 
