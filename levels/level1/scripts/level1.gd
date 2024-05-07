@@ -27,10 +27,10 @@ var min_speed = world_speed
 var start_temp = 37
 var min_temp = 30
 var temp = 37
-var end = 800
+var end = 400
 
 var level1: bool
-var save_path = "user://saves/level1.save"
+var save_path = "user://level1.save"
 
 var obstacle_types := [enemy, enemy, destructible_enemy]
 var platforms: Array
@@ -74,9 +74,8 @@ func _process(delta):
 
 	# Spawn a new platform
 	if Time.get_ticks_msec() > next_spawn_time:
-		if distance < end * 0.8:
-			_spawn_next_platform()
-			_generate_obstacles()
+		_spawn_next_platform()
+		_generate_obstacles()
 
 	# Update the UI labels
 	# distance_label.text = str(snapped(distance, 0)) + "m"

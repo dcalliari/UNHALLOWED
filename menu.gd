@@ -2,7 +2,7 @@ extends Control
 
 var first_time: bool
 
-var save_path = "user://saves/first_time.save"
+var save_path = "user://first_time.save"
 
 func _ready():
 	load_data()
@@ -16,7 +16,7 @@ func _on_start_pressed():
 		get_tree().change_scene_to_file("res://levels.tscn")
 
 func _on_infinite_pressed():
-	get_tree().change_scene_to_file("res://levels/infinite/scenes/infinite.tscn")
+	get_tree().change_scene_to_file("res://worlds.tscn")
 
 func _on_quit_pressed():
 	get_tree().quit()
