@@ -11,7 +11,7 @@ transform = Transform2D(5, 0, 0, 5, 0, 0)
 script = ExtResource("1_5r81x")
 
 [node name="CloudsBG" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.5, 0)
+motion_scale = Vector2(0.1, 0)
 motion_mirroring = Vector2(768, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="CloudsBG"]
@@ -21,7 +21,7 @@ texture = ExtResource("2_8jxne")
 centered = false
 
 [node name="LonelyCloud" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(1, 0)
+motion_scale = Vector2(0.8, 0)
 motion_mirroring = Vector2(768, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="LonelyCloud"]
@@ -31,7 +31,7 @@ texture = ExtResource("3_wdpl6")
 centered = false
 
 [node name="Mountains" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(1.5, 0)
+motion_scale = Vector2(1.2, 1)
 motion_mirroring = Vector2(768, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Mountains"]

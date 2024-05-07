@@ -2,7 +2,9 @@ extends Node2D
 
 signal game_over
 
-@export var world_speed = 800
+@export var modifier = 1.2
+
+@export var world_speed = 800*modifier
 
 @onready var moving = $Environment/Moving
 @onready var distance_label = $HUD/UI/Distance
@@ -16,6 +18,7 @@ signal game_over
 var platform = preload ("res://levels/level1/scenes/platform.tscn")
 var enemy = preload ("res://levels/level1/scenes/enemy.tscn")
 var destructible_enemy = preload ("res://levels/level1/scenes/destructible_enemy.tscn")
+var moving_enemy = preload ("res://levels/level2/scenes/moving_enemy.tscn")
 
 var rng = RandomNumberGenerator.new()
 var last_platform_position = Vector2.ZERO
@@ -27,15 +30,16 @@ var min_speed = world_speed
 var start_temp = 37
 var min_temp = 30
 var temp = 37
-var end = 400
+var end = 400*modifier
 
-var level1: bool
-var save_path = "user://level1.save"
+var level2: bool
+var save_path = "user://level2.save"
 
 var obstacle_types := [enemy, enemy,  enemy, enemy, enemy, destructible_enemy, destructible_enemy, destructible_enemy]
 var platforms: Array
 var last_obstacle
 var screen_size: Vector2
+var moving_enemy_heights := [600, 750]
 
 func _ready():
 	screen_size = get_window().size
@@ -52,7 +56,7 @@ func _process(delta):
 
 	if snapped(distance, 0) > end:
 		player.remove_from_group("player")
-		level1 = true
+		level2 = true
 		save_data()
 		clear_label.set_visible(true)
 		player.clear()
@@ -60,7 +64,7 @@ func _process(delta):
 	if player.active:
 		distance += 0.03 * world_speed * delta
 		bar.value = distance
-		temp -= 0.5 * delta
+		temp -= 0.5 * delta *modifier
 
 	if temp < start_temp:
 		var value = start_temp - temp
@@ -116,8 +120,11 @@ func _generate_obstacles():
 			obstacle = obstacle_type.instantiate()
 			_add_obstacle(obstacle, x + 80, y)
 	if last_obstacle:
-		var x: int = last_obstacle.position.x + randi_range(400, 750)
+		var x: int = last_obstacle.position.x + randi_range(350*modifier, 750*modifier)
 		var y: int = 786
+		#Spawn Moving enemy
+		if randi_range(1, 10) < 6:
+			_add_obstacle(moving_enemy.instantiate(), x, moving_enemy_heights.pick_random())
 		last_obstacle = obstacle
 		_add_obstacle(obstacle, x, y)
 		if obs_number == 2:
@@ -156,4 +163,4 @@ func retry():
 
 func save_data():
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
-	file.store_var(level1)
+	file.store_var(level2)

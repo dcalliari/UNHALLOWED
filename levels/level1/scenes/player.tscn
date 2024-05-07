@@ -124,7 +124,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4q3tt"]
-size = Vector2(13, 42)
+size = Vector2(5.33333, 42)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(-1, 0)
@@ -136,10 +136,10 @@ script = ExtResource("1_eoron")
 texture_filter = 1
 position = Vector2(0, 4)
 sprite_frames = SubResource("SpriteFrames_464yl")
-animation = &"attack"
+animation = &"run"
 autoplay = "run"
-frame = 1
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(7.5, 11)
+position = Vector2(2.33333, 11)
 shape = SubResource("RectangleShape2D_4q3tt")
