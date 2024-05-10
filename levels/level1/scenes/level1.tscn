@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://dkvlegsbi4uur"]
 
 [ext_resource type="Script" path="res://levels/level1/scripts/level1.gd" id="1_hyuas"]
-[ext_resource type="PackedScene" uid="uid://d005fk858km5w" path="res://levels/level1/scenes/background.tscn" id="2_l0bbx"]
+[ext_resource type="PackedScene" uid="uid://d005fk858km5w" path="res://levels/level1/scenes/background.tscn" id="2_bbvjt"]
 [ext_resource type="Script" path="res://levels/level1/scripts/play_area.gd" id="3_atoka"]
 [ext_resource type="PackedScene" uid="uid://vtpxijgbn0yx" path="res://levels/level1/scenes/platform.tscn" id="4_bg1sl"]
-[ext_resource type="PackedScene" uid="uid://d22j3ov65xpjk" path="res://levels/level1/scenes/player.tscn" id="5_w5ss3"]
-[ext_resource type="PackedScene" uid="uid://dov8nmmfj5bmg" path="res://levels/level1/scenes/hud.tscn" id="6_ys676"]
+[ext_resource type="PackedScene" uid="uid://d22j3ov65xpjk" path="res://levels/level1/scenes/player.tscn" id="5_5hst1"]
+[ext_resource type="PackedScene" uid="uid://dov8nmmfj5bmg" path="res://levels/level1/scenes/hud.tscn" id="6_qd2aw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n2u8a"]
 size = Vector2(2255, 1435)
@@ -21,8 +21,9 @@ size = Vector2(2011, 45)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_hyuas")
+world_speed = 1000
 
-[node name="Background" parent="." instance=ExtResource("2_l0bbx")]
+[node name="Background" parent="." instance=ExtResource("2_bbvjt")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
@@ -63,8 +64,7 @@ shape = SubResource("RectangleShape2D_ewfjn")
 [node name="Platform" parent="Environment/Moving" instance=ExtResource("4_bg1sl")]
 position = Vector2(1929, 538)
 
-[node name="Player" parent="." instance=ExtResource("5_w5ss3")]
-position = Vector2(168, 753)
-scale = Vector2(3, 3)
+[node name="Player" parent="." instance=ExtResource("5_5hst1")]
+position = Vector2(145, 753)
 
-[node name="HUD" parent="." instance=ExtResource("6_ys676")]
+[node name="HUD" parent="." instance=ExtResource("6_qd2aw")]

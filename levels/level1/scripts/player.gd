@@ -2,10 +2,10 @@ extends CharacterBody2D
 
 signal player_died
 
-@export var gravity = 3000
-@export var jump_power = 1000
+@export var gravity = 5000
+@export var jump_power = 1300
 @export var camera2D: Camera2D
-@export var speed = 800
+@export var speed = 1000
 
 @onready var player = $"."
 @onready var main = $"/root/Main"
@@ -55,8 +55,8 @@ func _physics_process(delta):
 					sprite.play("jump")
 			#else:
 				#sprite.play('double jump')
-		if Input.is_action_just_released("jump") and velocity.y < - jump_power / 2.0:
-			velocity.y = -jump_power / 2.0
+		if Input.is_action_just_released("jump"):
+			velocity.y = +jump_power *delta
 
 		# Handle walk
 		var direction = Input.get_axis("ui_left", "ui_right")
@@ -73,7 +73,7 @@ func _on_animation_finished():
 
 func is_hit(value):
 	if speed > min_speed:
-		speed = speed - value * 60
+		speed = speed - value * 100
 
 func is_healed():
 	if speed < 800:

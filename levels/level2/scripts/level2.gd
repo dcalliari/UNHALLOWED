@@ -2,7 +2,9 @@ extends Node2D
 
 signal game_over
 
-@export var world_speed = 800
+@export var modifier = 1.2
+
+@export var world_speed = 800*modifier
 
 @onready var moving = $Environment/Moving
 @onready var distance_label = $HUD/UI/Distance
@@ -13,9 +15,10 @@ signal game_over
 @onready var player = $Player
 @onready var ground = $Environment/Static/Ground
 
-var platform = preload ("res://levels/level2/scenes/platform.tscn")
-var enemy = preload ("res://levels/level2/scenes/enemy.tscn")
-var destructible_enemy = preload ("res://levels/level2/scenes/destructible_enemy.tscn")
+var platform = preload ("res://levels/level1/scenes/platform.tscn")
+var enemy = preload ("res://levels/level1/scenes/enemy.tscn")
+var destructible_enemy = preload ("res://levels/level1/scenes/destructible_enemy.tscn")
+var moving_enemy = preload ("res://levels/level2/scenes/moving_enemy.tscn")
 
 var rng = RandomNumberGenerator.new()
 var last_platform_position = Vector2.ZERO
@@ -27,15 +30,16 @@ var min_speed = world_speed
 var start_temp = 37
 var min_temp = 30
 var temp = 37
-var end = 800
+var end = 400*modifier
 
 var level2: bool
-var save_path = "user://saves/level2.save"
+var save_path = "user://level2.save"
 
-var obstacle_types := [enemy, enemy, destructible_enemy]
+var obstacle_types := [enemy, enemy,  enemy, enemy, enemy, destructible_enemy, destructible_enemy, destructible_enemy]
 var platforms: Array
 var last_obstacle
 var screen_size: Vector2
+var moving_enemy_heights := [600, 750]
 
 func _ready():
 	screen_size = get_window().size
@@ -60,7 +64,7 @@ func _process(delta):
 	if player.active:
 		distance += 0.03 * world_speed * delta
 		bar.value = distance
-		temp -= 0.5 * delta
+		temp -= 0.5 * delta *modifier
 
 	if temp < start_temp:
 		var value = start_temp - temp
@@ -74,11 +78,11 @@ func _process(delta):
 
 	# Spawn a new platform
 	if Time.get_ticks_msec() > next_spawn_time:
-		if distance < end * 0.8:
-			_spawn_next_platform()
-			_generate_obstacles()
+		_spawn_next_platform()
+		_generate_obstacles()
 
 	# Update the UI labels
+	distance_label.text = str(Engine.get_frames_per_second()) + "fps"
 	# distance_label.text = str(snapped(distance, 0)) + "m"
 	temp_label.text = "temp: " + str(snapped(temp, 0)) + " ºC"
 
@@ -95,14 +99,14 @@ func _spawn_next_platform():
 
 		# Update last platform position and increase next spawn
 		last_platform_position = new_platform.position
-		next_spawn_time += world_speed
+		next_spawn_time += world_speed / 2
 
 func _generate_obstacles():
 	var obstacle_type = obstacle_types.pick_random()
 	var obs_number
 	var obstacle = obstacle_type.instantiate()
 
-	if randi_range(1, 10) < 6:
+	if randi_range(1, 10) < 5:
 		obs_number = 2
 	else:
 		obs_number = 1
@@ -116,8 +120,11 @@ func _generate_obstacles():
 			obstacle = obstacle_type.instantiate()
 			_add_obstacle(obstacle, x + 80, y)
 	if last_obstacle:
-		var x: int = last_obstacle.position.x + randi_range(550, 800)
+		var x: int = last_obstacle.position.x + randi_range(350*modifier, 750*modifier)
 		var y: int = 786
+		#Spawn Moving enemy
+		if randi_range(1, 10) < 6:
+			_add_obstacle(moving_enemy.instantiate(), x, moving_enemy_heights.pick_random())
 		last_obstacle = obstacle
 		_add_obstacle(obstacle, x, y)
 		if obs_number == 2:
