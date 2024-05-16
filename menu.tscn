@@ -35,16 +35,10 @@ theme_override_fonts/font = ExtResource("3_uwgni")
 theme_override_font_sizes/font_size = 83
 text = "start"
 
-[node name="Infinite" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_uwgni")
-text = "infinite mode"
-
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_uwgni")
 text = "quit"
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Infinite" to="." method="_on_infinite_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
