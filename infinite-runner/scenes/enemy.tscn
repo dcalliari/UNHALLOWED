@@ -1,39 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dv3npus0xq8og"]
+[gd_scene load_steps=6 format=3 uid="uid://dv3npus0xq8og"]
 
 [ext_resource type="Script" path="res://infinite-runner/scripts/enemy.gd" id="1_87427"]
 [ext_resource type="Texture2D" uid="uid://d1stvnrckdepc" path="res://assets/img/obstaculo_azul.png" id="2_rbh3a"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lr1fq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_007ai"]
 atlas = ExtResource("2_rbh3a")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vbdem"]
-atlas = ExtResource("2_rbh3a")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3bh32"]
-atlas = ExtResource("2_rbh3a")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6ls70"]
-atlas = ExtResource("2_rbh3a")
-region = Rect2(384, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h7mng"]
-atlas = ExtResource("2_rbh3a")
-region = Rect2(512, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4fgmm"]
-atlas = ExtResource("2_rbh3a")
-region = Rect2(640, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5c2lk"]
-atlas = ExtResource("2_rbh3a")
-region = Rect2(768, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kufs3"]
-atlas = ExtResource("2_rbh3a")
-region = Rect2(896, 0, 128, 128)
+region = Rect2(0, 0, 96, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wluno"]
 animations = [{
@@ -47,28 +19,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lr1fq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vbdem")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3bh32")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6ls70")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h7mng")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4fgmm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5c2lk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kufs3")
+"texture": SubResource("AtlasTexture_007ai")
 }],
 "loop": true,
 "name": &"idle",
@@ -96,4 +47,4 @@ shape = SubResource("RectangleShape2D_scibo")
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
-polygon = PackedVector2Array(-46, 28, 0, -66, 46, 29, 48, 64, -47, 64)
+polygon = PackedVector2Array(-46, 45, -34, 9, -30, -17, -19, -38, -6, -60, 7, -29, 15, -28, 22, -3, 26, 4, 37, 26, 43, 24, 43, 38, 48, 64, -47, 64)

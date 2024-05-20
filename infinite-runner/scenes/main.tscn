@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dkvlegsbi4uur"]
+[gd_scene load_steps=17 format=3 uid="uid://dkvlegsbi4uur"]
 
 [ext_resource type="Script" path="res://infinite-runner/scripts/main.gd" id="1_hyuas"]
 [ext_resource type="PackedScene" uid="uid://d005fk858km5w" path="res://infinite-runner/scenes/background.tscn" id="2_bbvjt"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bkqmqomlci0df" path="res://assets/img/cenario_1_chao.png" id="8_kprxj"]
 [ext_resource type="Script" path="res://infinite-runner/scripts/reflection.gd" id="9_1vdyw"]
 [ext_resource type="PackedScene" uid="uid://ben2ykf5yae61" path="res://infinite-runner/scenes/background2.tscn" id="10_76vix"]
+[ext_resource type="PackedScene" uid="uid://dq4j5b30vobhv" path="res://touch.tscn" id="11_7ar5q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n2u8a"]
 size = Vector2(2255, 1435)
@@ -26,7 +27,7 @@ size = Vector2(2011, 45)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_60w23"]
 shader = ExtResource("7_hbrpg")
 shader_parameter/scale = Vector2(1.69878, 0.712963)
-shader_parameter/y_zoom = 0.33371
+shader_parameter/y_zoom = 0.31498
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_hyuas")
@@ -87,5 +88,8 @@ script = ExtResource("9_1vdyw")
 
 [node name="Background2" parent="." instance=ExtResource("10_76vix")]
 layer = 0
+
+[node name="Touch" parent="." instance=ExtResource("11_7ar5q")]
+visible = false
 
 [connection signal="item_rect_changed" from="Reflection" to="Reflection" method="_on_item_rect_changed"]

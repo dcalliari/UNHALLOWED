@@ -17,6 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Temp" type="Label" parent="UI"]
+visible = false
 texture_filter = 1
 layout_mode = 1
 offset_left = 56.0

@@ -1,8 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://d22j3ov65xpjk"]
+[gd_scene load_steps=23 format=3 uid="uid://d22j3ov65xpjk"]
 
 [ext_resource type="Script" path="res://infinite-runner/scripts/player.gd" id="1_eoron"]
 [ext_resource type="Texture2D" uid="uid://drb2q8krlhfv2" path="res://assets/img/unhollow_tapa-Sheet.png" id="2_ap4p2"]
 [ext_resource type="Texture2D" uid="uid://daogyyq54ou3i" path="res://assets/img/unhollow-Sheet.png" id="3_f8hq0"]
+[ext_resource type="AudioStream" uid="uid://r0kwwl784mrp" path="res://assets/sounds/human_atk_sword_1.wav" id="4_t0n5m"]
+[ext_resource type="AudioStream" uid="uid://b6eq4xb4mhv2u" path="res://assets/sounds/human_atk_sword_2.wav" id="5_j0yn7"]
+[ext_resource type="AudioStream" uid="uid://ckqyyvgd1m1ld" path="res://assets/sounds/human_atk_sword_3.wav" id="6_y4p6r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m3lj6"]
 atlas = ExtResource("2_ap4p2")
@@ -154,3 +157,12 @@ offset_bottom = 38.6667
 max_value = 1.0
 value = 1.0
 show_percentage = false
+
+[node name="Attack1Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_t0n5m")
+
+[node name="Attack2Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_j0yn7")
+
+[node name="Attack3Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_y4p6r")

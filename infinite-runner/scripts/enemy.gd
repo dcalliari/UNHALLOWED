@@ -16,7 +16,7 @@ func set_active(value):
 		sprite.play("idle")
 
 func _on_body_entered(body):
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and not player.is_dashing:
 		player.die()
 
 func _on_player_died():

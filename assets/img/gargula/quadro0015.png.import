@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccl2n2ri1evx3"
-path="res://.godot/imported/obstaculo_carmin.png-7c791901ebce507142f55c1d3a0942b8.ctex"
+uid="uid://b0x6vt5r8gyqp"
+path="res://.godot/imported/quadro0015.png-b13f31fc7cd64d05a241c3cebdc20acc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/obstaculo_carmin.png"
-dest_files=["res://.godot/imported/obstaculo_carmin.png-7c791901ebce507142f55c1d3a0942b8.ctex"]
+source_file="res://assets/img/gargula/quadro0015.png"
+dest_files=["res://.godot/imported/quadro0015.png-b13f31fc7cd64d05a241c3cebdc20acc.ctex"]
 
 [params]
 

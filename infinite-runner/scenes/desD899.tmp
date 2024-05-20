@@ -1,0 +1,113 @@
+[gd_scene load_steps=14 format=3 uid="uid://5x4rxclvy0y8"]
+
+[ext_resource type="Script" path="res://infinite-runner/scripts/destructible_enemy.gd" id="1_lxfv2"]
+[ext_resource type="Shader" path="res://infinite-runner/shaders/destructible_enemy2.gdshader" id="2_5l8jn"]
+[ext_resource type="Texture2D" uid="uid://cmx8eo4y1t06i" path="res://assets/img/obstaculo_crimson.png" id="2_bu03o"]
+[ext_resource type="AudioStream" uid="uid://bhiolmuhc3y74" path="res://assets/sounds/sword_hit_1.wav" id="3_p31fu"]
+[ext_resource type="AudioStream" uid="uid://cno7nq8v7qq4q" path="res://assets/sounds/sword_hit_2.wav" id="4_xcl04"]
+[ext_resource type="AudioStream" uid="uid://cli3rrc0mbp0m" path="res://assets/sounds/sword_hit_3.wav" id="5_wnfnh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_duv8g"]
+shader = ExtResource("2_5l8jn")
+shader_parameter/hit_opacity = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgsv1"]
+atlas = ExtResource("2_bu03o")
+region = Rect2(0, 0, 96, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wluno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgsv1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_scibo"]
+size = Vector2(96, 128)
+
+[sub_resource type="Animation" id="Animation_ebuom"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/hit_opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_60pj8"]
+resource_name = "hit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/hit_opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_llxai"]
+_data = {
+"RESET": SubResource("Animation_ebuom"),
+"hit": SubResource("Animation_60pj8")
+}
+
+[node name="DestructibleEnemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+script = ExtResource("1_lxfv2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_duv8g")
+sprite_frames = SubResource("SpriteFrames_wluno")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_scibo")
+
+[node name="Hitbox" type="Area2D" parent="."]
+visible = false
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
+polygon = PackedVector2Array(-43, 27, -33, 16, -23, 14, -21, -6, -14, -27, -10, -48, 0, -63, 12, -49, 14, -17, 23, -2, 24, 24, 30, 18, 46, 37, 48, 64, -49, 64)
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_p31fu")
+volume_db = -5.0
+
+[node name="HitSound2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_xcl04")
+volume_db = -5.0
+
+[node name="HitSound3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_wnfnh")
+volume_db = -5.0
+
+[node name="Hit" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_llxai")
+}
+autoplay = "RESET"

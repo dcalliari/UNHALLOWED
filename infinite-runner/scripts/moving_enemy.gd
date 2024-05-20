@@ -25,7 +25,7 @@ func set_active(value):
 		sprite.play("walk")
 
 func _on_body_entered(body):
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and not player.is_dashing:
 		if player.is_attacking:
 			player.die()
 			#sprite.play("death")

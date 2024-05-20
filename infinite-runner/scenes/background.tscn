@@ -21,11 +21,12 @@ texture = ExtResource("2_8jxne")
 centered = false
 
 [node name="Olho" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.4, 0)
+motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(768, 0)
 
 [node name="SpriteOlho" type="Sprite2D" parent="Olho"]
 texture_filter = 1
+position = Vector2(-112, 0)
 scale = Vector2(0.666667, 0.666667)
 centered = false
 

@@ -7,7 +7,7 @@ signal player_died
 @export var camera2D: Camera2D
 @export var speed = 800
 @export var dash_speed = 4000
-@export var dash_duration = 0.15
+@export var dash_duration = 0.2
 
 @onready var player = $"."
 @onready var main = $"/root/Main"
@@ -15,6 +15,10 @@ signal player_died
 @onready var camera = $"/root/Main/Camera2D"
 @onready var collision = $CollisionShape2D
 @onready var progress_bar = $ProgressBar
+
+@onready var attack_1_sound = $Attack1Sound
+@onready var attack_2_sound = $Attack2Sound
+@onready var attack_3_sound = $Attack3Sound
 
 var min_speed = speed / 2.0
 var active = true
@@ -37,7 +41,6 @@ func _process(delta):
 	progress_bar.value = timeout
 	if god_mode <=0 and is_dashing == true:
 		is_dashing = false
-		player.add_to_group('player')
 	if timeout <=0:
 		can_dash = true
 		progress_bar.set_visible(false)
@@ -57,11 +60,14 @@ func _physics_process(delta):
 			attacks_remaining -= 1
 			if attacks_remaining == 0:
 				sprite.play("attack")
+				attack_1_sound.play()
 				attacks_remaining = 3
 			elif attacks_remaining == 1:
 				sprite.play("attack")
+				attack_2_sound.play()
 			elif attacks_remaining == 2:
 				sprite.play("attack")
+				attack_3_sound.play()
 
 		# Handle jumping
 		if Input.is_action_just_pressed("jump") and jumps_remaining > 0:
@@ -116,7 +122,6 @@ func frame_freeze(time_scale, duration):
 
 func dash():
 	if Input.is_action_just_pressed("dash") and can_dash:
-			player.remove_from_group('player')
 			god_mode = dash_duration
 			can_dash = false
 			is_dashing = true
