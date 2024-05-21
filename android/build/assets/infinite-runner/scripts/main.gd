@@ -90,7 +90,7 @@ func _process(delta):
 		prev_distance += 1
 		if world_speed < max_speed:
 			world_speed += 0.5
-			#player.speed = world_speed
+			player.speed += 0.5
 
 	# Spawn a new platform
 	if time > next_spawn_time:

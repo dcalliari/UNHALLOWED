@@ -4,7 +4,14 @@ var first_time: bool
 
 var save_path = "user://first_time.save"
 
+@onready var music = $"/root/Music/AudioStreamPlayer2D"
+const SONG = preload("res://assets/sounds/song.wav")
+const MENU = preload("res://assets/sounds/menu.wav")
 func _ready():
+	if music.stream == SONG:
+		music.stream = MENU
+		music.play()
+		
 	load_data()
 
 func _on_start_pressed():
