@@ -1,6 +1,6 @@
-[gd_scene load_steps=34 format=3 uid="uid://dlxocpytayvyg"]
+[gd_scene load_steps=37 format=3 uid="uid://dlxocpytayvyg"]
 
-[ext_resource type="Script" path="res://infinite-runner/scripts/destructible_enemy.gd" id="1_5snb6"]
+[ext_resource type="Script" path="res://infinite-runner/scripts/destructible_gargoyle.gd" id="1_kbkvl"]
 [ext_resource type="Texture2D" uid="uid://b54bb8pyqei5h" path="res://assets/img/gargula_quebradica/quadro0028.png" id="2_6g5g8"]
 [ext_resource type="Texture2D" uid="uid://bmo2kgxp4vbat" path="res://assets/img/gargula_quebradica/quadro0000.png" id="3_2mq0g"]
 [ext_resource type="Texture2D" uid="uid://dar1u6i5senni" path="res://assets/img/gargula_quebradica/quadro0001.png" id="4_d5tup"]
@@ -30,7 +30,9 @@
 [ext_resource type="Texture2D" uid="uid://enrhgmclhmn8" path="res://assets/img/gargula_quebradica/quadro0025.png" id="28_rbq5r"]
 [ext_resource type="Texture2D" uid="uid://2deo4at1ojmw" path="res://assets/img/gargula_quebradica/quadro0026.png" id="29_00foq"]
 [ext_resource type="Texture2D" uid="uid://bn1b8c1nhd5vq" path="res://assets/img/gargula_quebradica/quadro0027.png" id="30_71tg4"]
-[ext_resource type="PackedScene" uid="uid://enc5lg0ho3a8" path="res://infinite-runner/scenes/enemy3.tscn" id="31_b1ugn"]
+[ext_resource type="AudioStream" uid="uid://dro072wrwuvjt" path="res://assets/sounds/quebra_obstaculo.wav" id="31_ib0qy"]
+[ext_resource type="AudioStream" uid="uid://dbpb02qpfwq48" path="res://assets/sounds/quebra_obstaculo2.wav" id="32_0pmyh"]
+[ext_resource type="AudioStream" uid="uid://dcwitte4dk2dt" path="res://assets/sounds/quebra_obstaculo3.wav" id="33_bra3x"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wluno"]
 animations = [{
@@ -43,7 +45,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"death",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -141,16 +143,19 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_scibo"]
 size = Vector2(135.385, 177.692)
 
-[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p56yr"]
+size = Vector2(16.6667, 176.667)
+
+[node name="DestructibleGargoyle" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(3, 3)
 collision_layer = 4
-script = ExtResource("1_5snb6")
+script = ExtResource("1_kbkvl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -66.3333)
 sprite_frames = SubResource("SpriteFrames_wluno")
-animation = &"idle"
+animation = &"death"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -161,21 +166,18 @@ shape = SubResource("RectangleShape2D_scibo")
 position = Vector2(0, -58.5897)
 collision_mask = 2
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
-polygon = PackedVector2Array(-22.3077, 56.0769, -22.3077, 37.6154, -19.2308, 33.7692, -19.2308, 29.9231, -34.6154, 23.7692, -40.7692, 16.8462, -41.5385, 9.15384, -47.6923, 6.07692, -60, -14.6923, -63.0769, -26.2308, -63.0769, -52.3846, -62.3077, -60.8462, -53.8462, -79.3077, -34.6154, -96.2308, -34.6154, -75.4615, -30, -53.9231, -16.9231, -30.8462, -16.1538, -34.6923, -12.3077, -44.6923, -7.69231, -43.1539, 6, -44, 12.3077, -43.9231, 16.9231, -34.6923, 31.5385, -57.7692, 33.8462, -95.4616, 51.5385, -82.3846, 63.0769, -58.5385, 63.8462, -26.2308, 55.3846, -4.69231, 44.6154, 9.15384, 40, 19.9231, 23.0769, 29.9231, 22, 34, 22.3077, 56.0769, 18.4615, 63.7692, 29.2308, 76.0769, 30.7692, 82.2308, -30, 82.2308, -29.2308, 76.0769, -18.4615, 63)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -7.07687)
+shape = SubResource("RectangleShape2D_p56yr")
 
-[node name="Enemy2" parent="." instance=ExtResource("31_b1ugn")]
-position = Vector2(-324.667, 3.33333)
-scale = Vector2(0.4, 0.4)
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("31_ib0qy")
+volume_db = -10.0
 
-[node name="Enemy3" parent="." instance=ExtResource("31_b1ugn")]
-position = Vector2(-539.667, 3.33333)
-scale = Vector2(0.4, 0.4)
+[node name="HitSound2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("32_0pmyh")
+volume_db = -10.0
 
-[node name="Enemy4" parent="." instance=ExtResource("31_b1ugn")]
-position = Vector2(-880.333, 3.33333)
-scale = Vector2(0.4, 0.4)
-
-[node name="Enemy5" parent="." instance=ExtResource("31_b1ugn")]
-position = Vector2(-1324.33, 3.33333)
-scale = Vector2(0.4, 0.4)
+[node name="HitSound3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("33_bra3x")
+volume_db = -10.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=34 format=3 uid="uid://hbribmky1guf"]
 
-[ext_resource type="Script" path="res://infinite-runner/scripts/enemy.gd" id="1_dd2vr"]
+[ext_resource type="Script" path="res://infinite-runner/scripts/gargoyle.gd" id="1_cyixj"]
 [ext_resource type="Texture2D" uid="uid://bnivoude1kyyn" path="res://assets/img/gargula/quadro0000.png" id="2_3qrhj"]
 [ext_resource type="Texture2D" uid="uid://caq70m07xdt2c" path="res://assets/img/gargula/quadro0001.png" id="3_j4hcv"]
 [ext_resource type="Texture2D" uid="uid://csqb8vcujvdm1" path="res://assets/img/gargula/quadro0002.png" id="4_esqwj"]
@@ -30,7 +30,6 @@
 [ext_resource type="Texture2D" uid="uid://cxgluy5qj77rj" path="res://assets/img/gargula/quadro0026.png" id="28_eo7yx"]
 [ext_resource type="Texture2D" uid="uid://d1qwhgup7dqoq" path="res://assets/img/gargula/quadro0027.png" id="29_mdt1d"]
 [ext_resource type="Texture2D" uid="uid://dn3eqfoum5as2" path="res://assets/img/gargula/quadro0028.png" id="30_qe7qc"]
-[ext_resource type="PackedScene" uid="uid://enc5lg0ho3a8" path="res://infinite-runner/scenes/enemy3.tscn" id="31_w2hdo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wluno"]
 animations = [{
@@ -138,10 +137,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_scibo"]
 size = Vector2(135.385, 177.692)
 
-[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uggmc"]
+size = Vector2(16.6667, 176.667)
+
+[node name="Gargoyle" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(3, 3)
 collision_layer = 4
-script = ExtResource("1_dd2vr")
+script = ExtResource("1_cyixj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -160,21 +162,6 @@ shape = SubResource("RectangleShape2D_scibo")
 position = Vector2(0, -59.5898)
 collision_mask = 2
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
-polygon = PackedVector2Array(-22.3077, 56.0769, -22.3077, 37.6154, -19.2308, 33.7692, -19.2308, 29.9231, -34.6154, 23.7692, -40.7692, 16.8462, -41.5385, 9.15384, -47.6923, 6.07692, -60, -14.6923, -63.0769, -26.2308, -63.0769, -52.3846, -62.3077, -60.8462, -53.8462, -79.3077, -34.6154, -96.2308, -34.6154, -75.4615, -30, -53.9231, -16.9231, -30.8462, -16.1538, -34.6923, -12.3077, -44.6923, -7.69231, -43.1539, 6, -44, 12.3077, -43.9231, 16.9231, -34.6923, 31.5385, -57.7692, 33.8462, -95.4616, 51.5385, -82.3846, 63.0769, -58.5385, 63.8462, -26.2308, 55.3846, -4.69231, 44.6154, 9.15384, 40, 19.9231, 23.0769, 29.9231, 22, 34, 22.3077, 56.0769, 18.4615, 63.7692, 29.2308, 76.0769, 30.7692, 82.2308, -30, 82.2308, -29.2308, 76.0769, -18.4615, 63)
-
-[node name="Enemy2" parent="." instance=ExtResource("31_w2hdo")]
-position = Vector2(-324.667, 3.33333)
-scale = Vector2(0.4, 0.4)
-
-[node name="Enemy3" parent="." instance=ExtResource("31_w2hdo")]
-position = Vector2(-539.667, 3.33333)
-scale = Vector2(0.4, 0.4)
-
-[node name="Enemy4" parent="." instance=ExtResource("31_w2hdo")]
-position = Vector2(-880.333, 3.33333)
-scale = Vector2(0.4, 0.4)
-
-[node name="Enemy5" parent="." instance=ExtResource("31_w2hdo")]
-position = Vector2(-1324.33, 3.33333)
-scale = Vector2(0.4, 0.4)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -7.07687)
+shape = SubResource("RectangleShape2D_uggmc")

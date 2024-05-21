@@ -10,9 +10,9 @@ func _ready():
 func _on_start_pressed():
 	if first_time:
 		# TODO: show instructions
-		get_tree().change_scene_to_file("res://infinite-runner/scenes/main.tscn")
+		get_tree().change_scene_to_file("res://bg_music.tscn")
 	if not first_time:
-		get_tree().change_scene_to_file("res://infinite-runner/scenes/main.tscn")
+		get_tree().change_scene_to_file("res://bg_music.tscn")
 
 func _on_quit_pressed():
 	get_tree().quit()

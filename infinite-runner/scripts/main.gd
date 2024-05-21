@@ -7,7 +7,7 @@ var mobile_mode
 var save_path = "user://first_time.save"
 
 @export var modifier = 1.0
-@export var world_speed = 800
+@export var world_speed = 700
 @export var level = 0
 
 @onready var moving = $Environment/Moving
@@ -22,14 +22,9 @@ var save_path = "user://first_time.save"
 var platform = preload ("res://infinite-runner/scenes/platform.tscn")
 var enemy = preload ("res://infinite-runner/scenes/enemy.tscn")
 var destructible_enemy = preload ("res://infinite-runner/scenes/destructible_enemy.tscn")
-var double_enemy = preload ("res://infinite-runner/scenes/double_enemy.tscn")
-var double_destructible_enemy = preload ("res://infinite-runner/scenes/double_destructible_enemy.tscn")
-var enemy2 = preload ("res://infinite-runner/scenes/enemy2.tscn")
-var enemy3 = preload ("res://infinite-runner/scenes/enemy3.tscn")
 var pillar = preload ("res://infinite-runner/scenes/pillar.tscn")
 var gargoyle = preload ("res://infinite-runner/scenes/gargoyle.tscn")
 var destructible_gargoyle = preload ("res://infinite-runner/scenes/destructible_gargoyle.tscn")
-var destructible_enemy2 = preload ("res://infinite-runner/scenes/destructible_enemy2.tscn")
 var moving_enemy = preload ("res://infinite-runner/scenes/moving_enemy.tscn")
 var penguin = preload ("res://infinite-runner/scenes/penguin.tscn")
 
@@ -44,10 +39,9 @@ var start_temp = 37
 var min_temp = 30
 var temp = 37
 var distance_calc = 0
-var threshold = 500
+var threshold = 400
 
-var obstacle_types := [enemy, enemy2,  enemy2, enemy, enemy, enemy2, destructible_enemy2, destructible_enemy, destructible_enemy, destructible_enemy2, enemy, enemy2,  enemy2, enemy, enemy, enemy2, destructible_enemy2, destructible_enemy, destructible_enemy, destructible_enemy2]
-var double_obstacle_types := [double_enemy, double_enemy, double_destructible_enemy]
+var obstacle_types := [enemy, enemy,  enemy, enemy, enemy, enemy, destructible_enemy, destructible_enemy, destructible_enemy, destructible_enemy, enemy, enemy,  enemy, enemy, enemy, enemy, destructible_enemy, destructible_enemy, destructible_enemy, destructible_enemy]
 var platforms: Array
 var last_obstacle
 var screen_size: Vector2
@@ -80,8 +74,9 @@ func _process(delta):
 	
 	if distance - distance_calc > threshold:
 		level += 1
-		modifier = modifier + 0.05
+		modifier = modifier + 0.01
 		distance_calc += threshold
+		threshold *= 1.5
 	
 	if player.active:
 		distance += 0.03 * world_speed * delta
@@ -104,7 +99,7 @@ func _process(delta):
 		_generate_obstacles()
 
 	# Update the UI labels
-	# distance_label.text = str(Engine.get_frames_per_second()) + "fps"
+	#distance_label.text = str(Engine.get_frames_per_second()) + "fps"
 	distance_label.text = str(snapped(distance, 0)) + "m"
 	temp_label.text = "temp: " + str(snapped(temp, 0)) + " ºC"
 
@@ -124,24 +119,14 @@ func _spawn_next_platform():
 		next_spawn_time += world_speed /2
 
 func _generate_obstacles():	
-	if level == 1:
-		obstacle_types.append(pillar)
-		obstacle_types.append(pillar)
-		obstacle_types.append(pillar)
-		obstacle_types.append(pillar)
-	else:
-		obstacle_types.erase(pillar)
-		obstacle_types.erase(pillar)
-		obstacle_types.erase(pillar)
-		obstacle_types.erase(pillar)
 	var obstacle_type = obstacle_types.pick_random()
-	var double_obstacle_type = double_obstacle_types.pick_random()
-	var obstacle
-	if randi_range(1, 10) < 5:
-		obstacle = double_obstacle_type.instantiate()
+	var obs_number
+	var obstacle = obstacle_type.instantiate()
+	
+	if randi_range(1, 10) < 4:
+		obs_number = 2
 	else:
-		obstacle = obstacle_type.instantiate()
-
+		obs_number = 1
 	if not last_obstacle:
 		var x: int = screen_size.x + distance + randi_range( - 100, 50)
 		var y: int = 786
@@ -153,22 +138,32 @@ func _generate_obstacles():
 		var y: int = 786
 
 		#Spawn Moving enemy
-		if (randi_range(1, 10) < 4) and level == 1:
+		if (randi_range(1, 10) < 3) and level == 1:
 			_add_obstacle(moving_enemy.instantiate(), x, moving_enemy_heights.pick_random())
-
-		#Spawn Gargoyle
-		if (randi_range(1, 10) == 2) and level == 2:
-			if (randi_range(1, 10) < 3):
-				_add_obstacle(destructible_gargoyle.instantiate(), x+300, y)
-			else:
-				_add_obstacle(gargoyle.instantiate(), x+300, y)
 
 		#Spawn Easter egg
 		if (randi_range(1, 100) == 1) and level == 0:
 			_add_obstacle(penguin.instantiate(), x, moving_enemy_heights.pick_random())
 
+		#Spawn Pillar
+		if (randi_range(1, 10) < 3) and level == 1 and obs_number == 1:
+			obstacle = pillar.instantiate()
+			_add_obstacle(obstacle, x, y)
+
+		#Spawn Gargoyle
+		if (randi_range(1, 10) < 5) and level == 2 and obs_number == 1:
+			if (randi_range(1, 10) < 5):
+				obstacle = destructible_gargoyle.instantiate()
+				_add_obstacle(obstacle, x+300, y)
+			else:
+				obstacle = gargoyle.instantiate()
+				_add_obstacle(obstacle, x+300, y)
+		else:
+			_add_obstacle(obstacle, x, y)
+			if obs_number == 2:
+				obstacle = obstacle_type.instantiate()
+				_add_obstacle(obstacle, x+80, y)
 		last_obstacle = obstacle
-		_add_obstacle(obstacle, x, y)
 
 
 func _add_obstacle(obstacle, x, y):

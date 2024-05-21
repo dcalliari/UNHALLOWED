@@ -233,8 +233,8 @@ scale = Vector2(1.5, 1.5)
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
-position = Vector2(-0.502858, 7.48716)
-scale = Vector2(0.974099, 1)
+position = Vector2(-0.359932, 7.48716)
+scale = Vector2(0.602476, 1)
 polygon = PackedVector2Array(14.6154, 63.5385, 5.38461, -31.8461, -0.010227, -107.179, -7.69231, -28.7692, -13.8462, 63.5385)
 disabled = true
 
