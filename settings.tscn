@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://megin4crpwmc"]
+
+[ext_resource type="Script" path="res://settings.gd" id="1_nb6hp"]
+[ext_resource type="Texture2D" uid="uid://c6ybxbsyk28at" path="res://assets/img/tela_iniciar.png" id="2_pd373"]
+[ext_resource type="FontFile" uid="uid://fu4hnjondoo6" path="res://assets/fonts/OLDLONDON.TTF" id="3_624st"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nb6hp")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="Start" type="Sprite2D" parent="ColorRect"]
+texture_filter = 1
+position = Vector2(960, 540)
+scale = Vector2(3.33333, 3.33333)
+texture = ExtResource("2_pd373")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.0
+offset_top = 217.0
+offset_right = -38.0
+offset_bottom = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.5, 2.5)
+
+[node name="CheckButton" type="CheckButton" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_624st")
+text = "Enable Mobile Buttons "
+
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_624st")
+theme_override_font_sizes/font_size = 24
+text = "return to main menu"
+
+[connection signal="toggled" from="ColorRect/VBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Button" to="." method="_on_button_pressed"]

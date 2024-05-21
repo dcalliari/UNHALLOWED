@@ -9,14 +9,10 @@ func _ready():
 
 func _on_start_pressed():
 	if first_time:
-		get_tree().change_scene_to_file("res://levels/level1/scenes/level1.tscn")
-		first_time = false
-		save_data()
-	else:
-		get_tree().change_scene_to_file("res://levels.tscn")
-
-func _on_infinite_pressed():
-	get_tree().change_scene_to_file("res://worlds.tscn")
+		# TODO: show instructions
+		get_tree().change_scene_to_file("res://bg_music.tscn")
+	if not first_time:
+		get_tree().change_scene_to_file("res://bg_music.tscn")
 
 func _on_quit_pressed():
 	get_tree().quit()
@@ -31,3 +27,6 @@ func load_data():
 		first_time = file.get_var()
 	else:
 		first_time = true
+
+func _on_settings_pressed():
+	get_tree().change_scene_to_file("res://settings.tscn")

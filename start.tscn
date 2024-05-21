@@ -1,0 +1,126 @@
+[gd_scene load_steps=7 format=3 uid="uid://lxusntcfux58"]
+
+[ext_resource type="Texture2D" uid="uid://c6ybxbsyk28at" path="res://assets/img/tela_iniciar.png" id="1_3cb64"]
+[ext_resource type="Script" path="res://start.gd" id="1_afvu3"]
+[ext_resource type="FontFile" uid="uid://fu4hnjondoo6" path="res://assets/fonts/OLDLONDON.TTF" id="2_gnm2v"]
+
+[sub_resource type="Animation" id="Animation_c7q6s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Start:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3mj32"]
+resource_name = "fade"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Start:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(2.82843, 3.4822),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(2.82843, 3.4822),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_304va"]
+_data = {
+"RESET": SubResource("Animation_c7q6s"),
+"fade": SubResource("Animation_3mj32")
+}
+
+[node name="Start" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_afvu3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="Start" type="Sprite2D" parent="ColorRect"]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+position = Vector2(960, 540)
+scale = Vector2(3.33333, 3.33333)
+texture = ExtResource("1_3cb64")
+
+[node name="Label" type="Label" parent="ColorRect"]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.0
+offset_top = 285.5
+offset_right = 172.0
+offset_bottom = 318.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_gnm2v")
+theme_override_font_sizes/font_size = 41
+text = "press ENTER to start"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="ColorRect/Label"]
+layout_mode = 0
+offset_left = -786.0
+offset_top = -828.0
+offset_right = 1130.0
+offset_bottom = 256.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../ColorRect")
+libraries = {
+"": SubResource("AnimationLibrary_304va")
+}
+autoplay = "fade"
+
+[connection signal="pressed" from="ColorRect/Label/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://dq4j5b30vobhv"]
+
+[ext_resource type="Texture2D" uid="uid://ciqrr3drs5ti" path="res://assets/img/icon_jump.png" id="1_pfi5l"]
+[ext_resource type="Texture2D" uid="uid://bc1k4o4v207ny" path="res://assets/img/icon_jump_clicked.png" id="2_ddtyf"]
+[ext_resource type="Texture2D" uid="uid://b5pmp23bkdp5u" path="res://assets/img/icon_dash.png" id="3_iidrm"]
+[ext_resource type="Texture2D" uid="uid://ce46qyluhk2wu" path="res://assets/img/icon_dash_clicked.png" id="4_5iy1g"]
+[ext_resource type="Texture2D" uid="uid://b7tajbwl77q7o" path="res://assets/img/icon_attack.png" id="5_ky6jo"]
+[ext_resource type="Texture2D" uid="uid://bjvkmd5okmbbr" path="res://assets/img/icon_attack_clicked.png" id="6_opkj2"]
+[ext_resource type="Texture2D" uid="uid://cvp1hyai3rb5x" path="res://assets/img/icon_walk.png" id="7_lvce8"]
+[ext_resource type="Texture2D" uid="uid://dm181j5tjnd0i" path="res://assets/img/icon_walk_clicked.png" id="8_nta1g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ypun1"]
+radius = 141.75
+
+[node name="Touch" type="Node2D"]
+
+[node name="Jump" type="TouchScreenButton" parent="."]
+position = Vector2(1679, 832)
+scale = Vector2(1.225, 1.225)
+texture_normal = ExtResource("1_pfi5l")
+texture_pressed = ExtResource("2_ddtyf")
+shape = SubResource("CircleShape2D_ypun1")
+passby_press = true
+action = "jump"
+
+[node name="Dash" type="TouchScreenButton" parent="."]
+position = Vector2(569, 868)
+scale = Vector2(0.99, 0.99)
+texture_normal = ExtResource("3_iidrm")
+texture_pressed = ExtResource("4_5iy1g")
+shape = SubResource("CircleShape2D_ypun1")
+passby_press = true
+action = "dash"
+
+[node name="Attack" type="TouchScreenButton" parent="."]
+position = Vector2(1418, 868)
+scale = Vector2(0.99, 0.99)
+texture_normal = ExtResource("5_ky6jo")
+texture_pressed = ExtResource("6_opkj2")
+shape = SubResource("CircleShape2D_ypun1")
+passby_press = true
+action = "attack"
+
+[node name="Left" type="TouchScreenButton" parent="."]
+position = Vector2(7, 830)
+scale = Vector2(1.225, 1.225)
+texture_normal = ExtResource("7_lvce8")
+texture_pressed = ExtResource("8_nta1g")
+shape = SubResource("CircleShape2D_ypun1")
+passby_press = true
+action = "ui_left"
+
+[node name="Right" type="TouchScreenButton" parent="."]
+position = Vector2(505, 832)
+scale = Vector2(-1.225, 1.225)
+texture_normal = ExtResource("7_lvce8")
+texture_pressed = ExtResource("8_nta1g")
+shape = SubResource("CircleShape2D_ypun1")
+passby_press = true
+action = "ui_right"

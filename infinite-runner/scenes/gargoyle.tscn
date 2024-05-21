@@ -1,0 +1,167 @@
+[gd_scene load_steps=34 format=3 uid="uid://hbribmky1guf"]
+
+[ext_resource type="Script" path="res://infinite-runner/scripts/gargoyle.gd" id="1_cyixj"]
+[ext_resource type="Texture2D" uid="uid://bnivoude1kyyn" path="res://assets/img/gargula/quadro0000.png" id="2_3qrhj"]
+[ext_resource type="Texture2D" uid="uid://caq70m07xdt2c" path="res://assets/img/gargula/quadro0001.png" id="3_j4hcv"]
+[ext_resource type="Texture2D" uid="uid://csqb8vcujvdm1" path="res://assets/img/gargula/quadro0002.png" id="4_esqwj"]
+[ext_resource type="Texture2D" uid="uid://bw4xfl2rt1xn" path="res://assets/img/gargula/quadro0003.png" id="5_e150d"]
+[ext_resource type="Texture2D" uid="uid://dh7k33vpb8wf3" path="res://assets/img/gargula/quadro0004.png" id="6_vvmq8"]
+[ext_resource type="Texture2D" uid="uid://clltg7t3qcugw" path="res://assets/img/gargula/quadro0005.png" id="7_qf4f0"]
+[ext_resource type="Texture2D" uid="uid://cp36v0lv0gko2" path="res://assets/img/gargula/quadro0006.png" id="8_4cek6"]
+[ext_resource type="Texture2D" uid="uid://dorvuh3in8acr" path="res://assets/img/gargula/quadro0007.png" id="9_igdmi"]
+[ext_resource type="Texture2D" uid="uid://d2ve18c0ou1wv" path="res://assets/img/gargula/quadro0008.png" id="10_l5h3l"]
+[ext_resource type="Texture2D" uid="uid://cleu1c44xfi8k" path="res://assets/img/gargula/quadro0009.png" id="11_vsqk2"]
+[ext_resource type="Texture2D" uid="uid://qf4nc5eedk5p" path="res://assets/img/gargula/quadro0010.png" id="12_2g3tr"]
+[ext_resource type="Texture2D" uid="uid://bpspycg31tlhm" path="res://assets/img/gargula/quadro0011.png" id="13_wckqp"]
+[ext_resource type="Texture2D" uid="uid://bbqvl7r43iwe5" path="res://assets/img/gargula/quadro0012.png" id="14_5ccsh"]
+[ext_resource type="Texture2D" uid="uid://bhn3fhhwhmw3o" path="res://assets/img/gargula/quadro0013.png" id="15_mln0y"]
+[ext_resource type="Texture2D" uid="uid://d1bhh2fejghc3" path="res://assets/img/gargula/quadro0014.png" id="16_tustu"]
+[ext_resource type="Texture2D" uid="uid://b0x6vt5r8gyqp" path="res://assets/img/gargula/quadro0015.png" id="17_j081m"]
+[ext_resource type="Texture2D" uid="uid://cpacjp11hijni" path="res://assets/img/gargula/quadro0016.png" id="18_e3cif"]
+[ext_resource type="Texture2D" uid="uid://b22lwq0uox52b" path="res://assets/img/gargula/quadro0017.png" id="19_wivs5"]
+[ext_resource type="Texture2D" uid="uid://bbfvpgplv7wsp" path="res://assets/img/gargula/quadro0018.png" id="20_7j4jg"]
+[ext_resource type="Texture2D" uid="uid://ce54vhs56u3pn" path="res://assets/img/gargula/quadro0019.png" id="21_ahwh1"]
+[ext_resource type="Texture2D" uid="uid://cdnjv6fh45bli" path="res://assets/img/gargula/quadro0020.png" id="22_7je73"]
+[ext_resource type="Texture2D" uid="uid://dqyfik44bctog" path="res://assets/img/gargula/quadro0021.png" id="23_nac1v"]
+[ext_resource type="Texture2D" uid="uid://5bch6bpmi8vh" path="res://assets/img/gargula/quadro0022.png" id="24_se06e"]
+[ext_resource type="Texture2D" uid="uid://1bao3mjfjq75" path="res://assets/img/gargula/quadro0023.png" id="25_l0fxa"]
+[ext_resource type="Texture2D" uid="uid://cihb3n8ams3xt" path="res://assets/img/gargula/quadro0024.png" id="26_ifjvn"]
+[ext_resource type="Texture2D" uid="uid://s0d8ipmkmxu1" path="res://assets/img/gargula/quadro0025.png" id="27_ycfgu"]
+[ext_resource type="Texture2D" uid="uid://cxgluy5qj77rj" path="res://assets/img/gargula/quadro0026.png" id="28_eo7yx"]
+[ext_resource type="Texture2D" uid="uid://d1qwhgup7dqoq" path="res://assets/img/gargula/quadro0027.png" id="29_mdt1d"]
+[ext_resource type="Texture2D" uid="uid://dn3eqfoum5as2" path="res://assets/img/gargula/quadro0028.png" id="30_qe7qc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wluno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3qrhj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_j4hcv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_esqwj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_e150d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vvmq8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qf4f0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4cek6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_igdmi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_l5h3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_vsqk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_2g3tr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_wckqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_5ccsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_mln0y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_tustu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_j081m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_e3cif")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_wivs5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_7j4jg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_ahwh1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_7je73")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_nac1v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_se06e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_l0fxa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_ifjvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_ycfgu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_eo7yx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_mdt1d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_qe7qc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 24.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_scibo"]
+size = Vector2(135.385, 177.692)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uggmc"]
+size = Vector2(16.6667, 176.667)
+
+[node name="Gargoyle" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(3, 3)
+collision_layer = 4
+script = ExtResource("1_cyixj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -66.3333)
+sprite_frames = SubResource("SpriteFrames_wluno")
+animation = &"idle"
+autoplay = "idle"
+frame = 28
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -66.2051)
+shape = SubResource("RectangleShape2D_scibo")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, -59.5898)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -7.07687)
+shape = SubResource("RectangleShape2D_uggmc")
