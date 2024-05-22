@@ -5,7 +5,7 @@ signal player_died
 @export var gravity = 5000
 @export var jump_power = 1300
 @export var camera2D: Camera2D
-@export var speed = 800
+@export var speed = 700
 @export var dash_speed = 4000
 @export var dash_duration = 0.2
 
@@ -19,6 +19,8 @@ signal player_died
 @onready var attack_1_sound = $Attack1Sound
 @onready var attack_2_sound = $Attack2Sound
 @onready var attack_3_sound = $Attack3Sound
+@onready var dash_sound = $DashSound
+@onready var death_sound = $DeathSound
 
 var min_speed = speed / 2.0
 var active = true
@@ -105,6 +107,7 @@ func is_healed():
 		speed = 800
 
 func die():
+	death_sound.play()
 	player.frame_freeze(0.01, 0.4)
 	sprite.stop()
 	active = false
@@ -122,6 +125,7 @@ func frame_freeze(time_scale, duration):
 
 func dash():
 	if Input.is_action_just_pressed("dash") and can_dash:
+			dash_sound.play(0.15)
 			god_mode = dash_duration
 			can_dash = false
 			is_dashing = true

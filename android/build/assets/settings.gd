@@ -7,7 +7,6 @@ var save_path = "user://mobile_mode.save"
 
 func _ready():
 	load_data()
-	print(mobile_mode)
 	check_button.button_pressed = mobile_mode
 
 func _on_check_button_toggled(toggled_on):

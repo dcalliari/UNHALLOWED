@@ -7,7 +7,7 @@ var mobile_mode
 var save_path = "user://mobile_mode.save"
 
 @export var modifier = 1.0
-@export var world_speed = 800
+@export var world_speed = 700
 @export var level = 0
 
 @onready var moving = $Environment/Moving
@@ -39,7 +39,7 @@ var start_temp = 37
 var min_temp = 30
 var temp = 37
 var distance_calc = 0
-var threshold = 400
+var threshold = 500
 
 var obstacle_types := [enemy, enemy,  enemy, enemy, enemy, enemy, destructible_enemy, destructible_enemy, destructible_enemy, destructible_enemy, enemy, enemy,  enemy, enemy, enemy, enemy, destructible_enemy, destructible_enemy, destructible_enemy, destructible_enemy]
 var platforms: Array
@@ -74,7 +74,7 @@ func _process(delta):
 	
 	if distance - distance_calc > threshold:
 		level += 1
-		modifier = modifier + 0.05
+		modifier = modifier + 0.01
 		distance_calc += threshold
 	
 	if player.active:
@@ -90,7 +90,7 @@ func _process(delta):
 		prev_distance += 1
 		if world_speed < max_speed:
 			world_speed += 0.5
-			player.speed += 0.5
+			#player.speed = world_speed
 
 	# Spawn a new platform
 	if time > next_spawn_time:
@@ -98,7 +98,7 @@ func _process(delta):
 		_generate_obstacles()
 
 	# Update the UI labels
-	# distance_label.text = str(Engine.get_frames_per_second()) + "fps"
+	#distance_label.text = str(Engine.get_frames_per_second()) + "fps"
 	distance_label.text = str(snapped(distance, 0)) + "m"
 	temp_label.text = "temp: " + str(snapped(temp, 0)) + " ºC"
 
@@ -151,7 +151,7 @@ func _generate_obstacles():
 
 		#Spawn Gargoyle
 		if (randi_range(1, 10) < 5) and level == 2 and obs_number == 1:
-			if (randi_range(1, 10) < 2):
+			if (randi_range(1, 10) < 5):
 				obstacle = destructible_gargoyle.instantiate()
 				_add_obstacle(obstacle, x+300, y)
 			else:

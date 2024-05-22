@@ -35,10 +35,11 @@ func _on_body_entered(body):
 		if player.is_attacking and main.level != 2:
 			hit_sounds = [hit_sound, hit_sound_2, hit_sound_3]
 			sound = [hit_sound, hit_sound_2, hit_sound_3].pick_random()
-			sound.play()
+			sound.play(0.12)
 			player.frame_freeze(0.1, 0.1)
 			set_modulate(Color(10,10,10,10))
 			sprite.play(death)
+			hitbox.set_monitoring(false)
 			if randi_range(0, 100) < 30:
 				main.add_temp(37)
 			sprite.animation_finished.connect(_on_animation_finished)
