@@ -24,7 +24,7 @@ passby_press = true
 action = "jump"
 
 [node name="Dash" type="TouchScreenButton" parent="."]
-position = Vector2(569, 868)
+position = Vector2(497, 868)
 scale = Vector2(0.99, 0.99)
 texture_normal = ExtResource("3_iidrm")
 texture_pressed = ExtResource("4_5iy1g")
@@ -33,7 +33,7 @@ passby_press = true
 action = "dash"
 
 [node name="Attack" type="TouchScreenButton" parent="."]
-position = Vector2(1418, 868)
+position = Vector2(1431, 868)
 scale = Vector2(0.99, 0.99)
 texture_normal = ExtResource("5_ky6jo")
 texture_pressed = ExtResource("6_opkj2")
@@ -42,7 +42,7 @@ passby_press = true
 action = "attack"
 
 [node name="Left" type="TouchScreenButton" parent="."]
-position = Vector2(7, 830)
+position = Vector2(0, 835)
 scale = Vector2(1.225, 1.225)
 texture_normal = ExtResource("7_lvce8")
 texture_pressed = ExtResource("8_nta1g")
@@ -51,7 +51,7 @@ passby_press = true
 action = "ui_left"
 
 [node name="Right" type="TouchScreenButton" parent="."]
-position = Vector2(505, 832)
+position = Vector2(487, 835)
 scale = Vector2(-1.225, 1.225)
 texture_normal = ExtResource("7_lvce8")
 texture_pressed = ExtResource("8_nta1g")

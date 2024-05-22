@@ -27,7 +27,7 @@ size = Vector2(2011, 45)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_60w23"]
 shader = ExtResource("7_hbrpg")
 shader_parameter/scale = Vector2(1.69878, 0.712963)
-shader_parameter/y_zoom = 0.31498
+shader_parameter/y_zoom = 0.471937
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_hyuas")
@@ -90,6 +90,5 @@ script = ExtResource("9_1vdyw")
 layer = 0
 
 [node name="Touch" parent="." instance=ExtResource("11_7ar5q")]
-visible = false
 
 [connection signal="item_rect_changed" from="Reflection" to="Reflection" method="_on_item_rect_changed"]
