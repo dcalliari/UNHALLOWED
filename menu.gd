@@ -7,6 +7,7 @@ var save_path = "user://first_time.save"
 @onready var music = $"/root/Music/AudioStreamPlayer2D"
 const SONG = preload("res://assets/sounds/song.wav")
 const MENU = preload("res://assets/sounds/menu.wav")
+
 func _ready():
 	if music.stream == SONG:
 		music.stream = MENU
@@ -17,8 +18,10 @@ func _ready():
 func _on_start_pressed():
 	if first_time:
 		# TODO: show instructions
-		get_tree().change_scene_to_file("res://bg_music.tscn")
-	if not first_time:
+		get_tree().change_scene_to_file("res://cutscene.tscn")
+		first_time = false
+		save_data()
+	else:
 		get_tree().change_scene_to_file("res://bg_music.tscn")
 
 func _on_quit_pressed():

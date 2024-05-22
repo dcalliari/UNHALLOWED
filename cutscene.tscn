@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceol1qhigol6p"]
+
+[ext_resource type="Script" path="res://cutscene.gd" id="1_84m8w"]
+[ext_resource type="VideoStream" path="res://assets/unhtrai_1.ogv" id="1_pl1i8"]
+
+[node name="Cutscene" type="Node2D"]
+script = ExtResource("1_84m8w")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+stream = ExtResource("1_pl1i8")
+autoplay = true
+
+[connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]

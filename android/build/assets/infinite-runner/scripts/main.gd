@@ -4,7 +4,7 @@ signal game_over
 
 var mobile_mode
 
-var save_path = "user://first_time.save"
+var save_path = "user://mobile_mode.save"
 
 @export var modifier = 1.0
 @export var world_speed = 800

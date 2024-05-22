@@ -4,7 +4,7 @@ signal game_over
 
 var mobile_mode
 
-var save_path = "user://first_time.save"
+var save_path = "user://mobile_mode.save"
 
 @export var modifier = 1.0
 @export var world_speed = 700
@@ -39,7 +39,7 @@ var start_temp = 37
 var min_temp = 30
 var temp = 37
 var distance_calc = 0
-var threshold = 400
+var threshold = 500
 
 var obstacle_types := [enemy, enemy,  enemy, enemy, enemy, enemy, destructible_enemy, destructible_enemy, destructible_enemy, destructible_enemy, enemy, enemy,  enemy, enemy, enemy, enemy, destructible_enemy, destructible_enemy, destructible_enemy, destructible_enemy]
 var platforms: Array
@@ -76,7 +76,6 @@ func _process(delta):
 		level += 1
 		modifier = modifier + 0.01
 		distance_calc += threshold
-		threshold *= 1.5
 	
 	if player.active:
 		distance += 0.03 * world_speed * delta

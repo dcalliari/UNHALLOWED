@@ -3,7 +3,7 @@ extends Control
 @onready var check_button = $ColorRect/VBoxContainer/CheckButton
 
 var mobile_mode
-var save_path = "user://first_time.save"
+var save_path = "user://mobile_mode.save"
 
 func _ready():
 	load_data()
